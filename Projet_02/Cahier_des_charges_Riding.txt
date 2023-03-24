@@ -1,0 +1,6 @@
+3 sections :
+	- le Header
+	- la mission de l'association avec 4 grands poles : Promouvoir, Transmettre, Entraîner, Fédérer.
+	- les photos des membres fondateurs avec leur nom et spécialité
+	- 1 bouton de téléchargement pour le planning des adultes et un autre pour le planning des enfants.
+		mettre un effet de survol sur les boutons de téléchargement.
