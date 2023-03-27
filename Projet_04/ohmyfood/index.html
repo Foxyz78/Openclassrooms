@@ -5,11 +5,80 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <title>Ohmyfood - accueil</title>
 </head>
 
 <body>
+    <header class="site-header">
+        <h1 class="site-header__titre">
+            <a href="#">
+                <img src="./images/logo/ohmyfood.png" alt="logo du site Ohmyfood">
+            </a>
+        </h1>
+        <div class="site-header__recherche-ville">
+            <form action="" class="form">
+                <i class="fa-solid fa-location-dot"></i>
+                <input type="text" name="" placeholder="Paris, Belleville">
+            </form>
+        </div>
+    </header>
 
+    <main class="container">
+        <section class="container-description">
+            <h2 class="container-description__titre-section">Réservervez le menu qui vous convient</h2>
+            <p class="container-description__contenu">Découvrez des restaurants d'exception, sélectionnés par nos soins.
+            </p>
+            <button type="btn">Explorez nos restaurants</button>
+        </section>
+
+
+        <section class="container-fonctionnement">
+            <h2 class="container-fonctionnement__titre-section">Fonctionnement</h2>
+
+            <div class="container-fonctionnement__contenu">
+                <div><i class="fa-solid fa-mobile-screen-button"></i> Choisissez un restaurant</div>
+                <div><i class="fa-solid fa-ellipsis-vertical"></i> <i class="fa-solid fa-bars"></i> Composez votre menu
+                </div>
+                <div><i class="fa-solid fa-store"></i> Dégustez au restaurant</div>
+            </div>
+
+        </section>
+
+
+        <section class="container-restaurant">
+            <h2 class="container-restaurant__titre-section">Restaurants</h2>
+            <div class="carte">
+                <a href="">
+                    <img src="./images/restaurants/jay-wennington-N_Y88TWmGwA-unsplash.jpg" alt="plat gastronomique"
+                        width="20%" class="carte__image">
+                    <div class="carte-container">
+                        <h3 class="carte-container__nom">La palette du goût</h3>
+                        <p class="carte-container__ville">Ménilmontant</p>
+                        <i class="fa-regular fa-heart"></i>
+                </a>
+            </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="site-contenu">
+            <ul>
+                <li><a href="">Ohmyfood</a></li>
+                <li><a href=""><i class="fa-solid fa-utensils"></i>Proposer un restaurant</a></li>
+                <li><a href=""><i class="fa-solid fa-handshake"></i>Devenir partenaire</a> </li>
+                <li><a href="">Mentions légales</a></li>
+                <li><a href="">Contact</a> </li>
+            </ul>
+
+        </div>
+    </footer>
 </body>
 
 </html>
