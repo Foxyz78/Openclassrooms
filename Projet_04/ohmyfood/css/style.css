@@ -222,6 +222,7 @@ hr {
 .section__menu {
     display: flex;
     flex-direction: column;
+    padding-bottom: 4rem;
 }
 
 .section__menu h3 {
@@ -283,6 +284,10 @@ hr {
 .fonctionnement__contenu {
     display: flex;
     flex-direction: column;
+}
+
+.fonctionnement__contenu i {
+    padding: 0 2.3rem 0 2.3rem;
 }
 
 .fonctionnement__contenu div {
@@ -523,6 +528,21 @@ hr {
 
     .carte img {
         width: 100%;
+    }
+
+    /****** MENU ******/
+    .menu__titre h2 {
+        text-align: center;
+    }
+
+    .main__menu {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .section__menu {
+        width: 75%;
+        margin: 0 auto;
     }
 
     /************** FOOTER *****************/
