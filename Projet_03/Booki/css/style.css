@@ -178,6 +178,7 @@ form {
   width: 195px;
   text-align: center;
   border: none;
+  outline: none;
 }
 
 .filtre-hebergement {
