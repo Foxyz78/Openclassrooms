@@ -38,6 +38,22 @@ img {
     width: 1.6rem;
 }
 
+.heart-color {
+    color: blue;
+    transition: 3s ease-in-out;
+    : none;
+}
+
+.heart-color:hover {
+    color: red;
+}
+
+.fa-arrow-left {
+    position: relative;
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%);
+}
 
 .btn-arrondi {
     display: flex;
@@ -56,6 +72,12 @@ img {
     border: .1rem solid #9356DC;
     border-radius: 2.5rem;
     box-shadow: 0px .4rem 1rem rgba(0, 0, 0, 0.25);
+    transition: 4s;
+}
+
+.btn-arrondi:hover {
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15)), linear-gradient(200.64deg, #9356DC -5.2%, #FF79DA 110.74%);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.35);
 }
 
 article {
@@ -63,13 +85,6 @@ article {
     width: 5.9rem;
 
 }
-
-/* article:active {
-    height: 9.9rem;
-    width: 5.9rem;
-    background-color: #99E2D0;
-
-} */
 
 hr {
     width: 4rem;
@@ -99,13 +114,9 @@ hr {
 }
 
 .site-header__titre {
-    display: flex;
-    text-align: center;
-}
-
-
-.site-header__titre {
+    width: 100%;
     height: 6.3rem;
+    display: flex;
     justify-content: center;
     padding: 1.4rem 0 .8rem 0;
     font-family: Shrikhand;
@@ -167,34 +178,26 @@ hr {
     font-weight: 300;
     text-align: center;
     align-self: center;
-
-}
-
-.description button {
-    width: 21.8rem;
-    height: 5rem;
-    margin-top: 2.7rem;
-    background: linear-gradient(200.64deg, #9356DC -5.2%, #FF79DA 110.74%);
-    /* transform: matrix(1, 0, 0, -1, 0, 0); */
-    color: #fff;
-    font-size: 1.6rem;
-    font-family: Roboto;
-    font-weight: 500;
-    border: .1rem solid #9356DC;
-    border-radius: 2.5rem;
-    box-shadow: 0px .4rem 1rem rgba(0, 0, 0, 0.25);
-    align-self: center;
 }
 
 /********************** PAGE MENU **********************/
-
 .main__container {
     /* background-color: #F7F7F7; */
 }
 
-.site-header .image__menu {
+.site-header a {
+    height: 6.3rem;
+    position: absolute;
+    left: 5%;
+}
+
+.site-header i {
+    /* position: absolute; */
+}
+
+.image__menu {
     width: 100%;
-    height: 37.5rem;
+    height: 27.5rem;
     position: relative;
     top: 2rem;
 }
@@ -203,20 +206,30 @@ hr {
     position: relative;
     padding-bottom: 4rem;
     z-index: 999;
-    bottom: 6.3rem;
+    bottom: 2.3rem;
     border-radius: 4rem 4rem 0 0;
     background: #F6F6F6;
     display: flex;
     flex-direction: column;
 }
 
-.menu__titre h2 {
+.menu__titre {
+    display: flex;
     position: relative;
-    left: 5%;
-    padding-top: 3.2rem;
+    padding: 3.2rem 5% 4.2rem 5%;
+}
+
+.menu__titre h2 {
     font-family: Shrikhand;
     font-weight: 400;
     font-size: 2.8rem;
+    margin-right: 5%;
+}
+
+.menu__titre i {
+    height: 4.1rem;
+    display: flex;
+    align-items: center;
 }
 
 .section__menu {
@@ -234,14 +247,59 @@ hr {
     font-size: 1.6rem;
 }
 
+.section__menu .article__container {
+    width: 100%;
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
 .section__menu article {
     width: 90%;
-    padding: 1.2rem 1.5rem;
+    display: flex;
     margin-bottom: 1.2rem;
     background-color: #fff;
     border-radius: 1.5rem;
     box-shadow: 0px 4.01149px 15.0431px rgba(0, 0, 0, 0.1);
     align-self: center;
+
+}
+
+.checked-hide {
+    width: 5.9rem;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    background-color: #99E2D0;
+    border-radius: 0px 15px 15px 0px;
+    animation: button-check-slide-reverse .5s ease-in-out;
+
+}
+
+/****** Animation hover qui fait apparaitre le button check / slide de droite à gauche *****/
+.section__menu article:hover .checked-hide {
+    display: flex;
+    animation: button-check-slide .5s ease-out;
+}
+
+@keyframes button-check-slide {
+    0% {
+        width: 0rem;
+    }
+
+    100% {
+        width: 5.rem;
+    }
+}
+
+@keyframes button-check-slide-reverse {
+    0% {
+        width: 5.4rem;
+    }
+
+    100% {
+        width: 0rem;
+    }
 }
 
 .article__titre {
@@ -300,7 +358,6 @@ hr {
     font-family: Roboto;
     margin-bottom: 2.5rem;
     display: flex;
-    /* justify-content: space-around; */
     align-items: center;
     align-self: center;
     transition: .3s ease-in-out;
@@ -396,22 +453,21 @@ hr {
     font-size: 1.7rem;
 }
 
-.fa-regular {
-    /* display: flex;
-    justify-content: end;
+.carte i {
     width: 100%;
     position: relative;
-    top: -2rem;
-    padding-right: 2.5rem; */
+    top: -28px;
+    display: flex;
+    justify-content: end;
 }
 
 /********* TODO : Animation du coeur *****************/
 .fa-heart {
 
-    position: relative;
+    /* position: relative;
     top: -2rem;
     left: 85%;
-    padding-right: 2.5rem;
+    padding-right: 2.5rem; */
     /* transition: 3s ease-in-out; */
 }
 
@@ -457,6 +513,20 @@ hr {
 ******************************************************/
 @media (min-width: 768px) and (max-width: 1024px) {
 
+    .site-footer__contenu {
+        width: 100%;
+        display: flex;
+        /* flex-direction: row; */
+    }
+
+    /* Place le footer en ligne et le centre au milieu de la page */
+    ul {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
     /* CSS */
 
 }
@@ -470,16 +540,19 @@ hr {
         width: 100%;
     }
 
-
     .description__titre-section,
     .description__contenu {
         width: 100%;
     }
 
     .fonctionnement {
+        width: 65%;
+        margin: 0 auto;
         display: flex;
-        padding-left: 10rem;
-        padding-right: 10rem;
+    }
+
+    .fonctionnement__titre-section {
+        margin-left: 0;
     }
 
     .fonctionnement__contenu {
@@ -490,21 +563,21 @@ hr {
     }
 
     .fonctionnement__contenu div {
-        flex-direction: row;
         width: 30%;
-        justify-content: space-evenly;
     }
 
     .restaurant {
         display: flex;
-        padding-left: 10rem;
-        padding-right: 10rem;
+        /* padding-right: 10rem; */
         flex-direction: column;
     }
 
     .restaurant__titre-section {
+        width: 65%;
         display: flex;
         flex-direction: row;
+        margin: 0 auto;
+        padding-bottom: 4rem;
     }
 
     /***** carte ****/
@@ -516,10 +589,12 @@ hr {
     }
 
     .carte-test {
+        width: 65%;
+        margin: 0 auto;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content: space-around;
+        justify-content: space-between;
     }
 
     .carte a {
@@ -531,12 +606,12 @@ hr {
     }
 
     /****** MENU ******/
-    .menu__titre h2 {
-        text-align: center;
+    .menu__titre {
+        justify-content: center;
     }
 
     .main__menu {
-        width: 80%;
+        width: 75%;
         margin: 0 auto;
     }
 
