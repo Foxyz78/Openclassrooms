@@ -9,10 +9,11 @@
 
 html {
     font-size: 62.5%;
+    font-family: Roboto, sans-serif;
 }
 
 h2 {
-    font-family: Roboto;
+
     font-size: 2.4rem;
     font-weight: 700;
 }
@@ -33,19 +34,54 @@ img {
     object-fit: cover;
 }
 
-.fa-heart {
-    height: 1.6rem;
-    width: 1.6rem;
+/********** ANIMATION LOADER ********/
+.anneau__loader {
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    margin-top: 40vh;
+    z-index: 1;
+    height: 100vh;
+    background-color: #fff;
+    opacity: 1;
 }
 
-.heart-color {
-    color: blue;
-    transition: 3s ease-in-out;
-    : none;
+.anneau__loader:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: 6px solid red;
+    border-color: #9356DC transparent #FF79DA transparent;
+    animation: ring-animation 1.5s infinite linear;
 }
 
-.heart-color:hover {
+@keyframes ring-animation {
+    0% {
+        transform: rotate(0deg);
+        border-color: #9356DC transparent #9356DC transparent;
+    }
+
+    100% {
+        transform: rotate(360deg);
+        border-color: #FF79DA transparent #FF79DA transparent;
+    }
+}
+
+/****** ANIMATION DU COEUR *********/
+.heart__survol {
+    background: linear-gradient(#FF79DA, #9356DC);
+    -webkit-background-clip: text;
+    background-clip: text;
     color: red;
+    transition: 2s ease-in-out;
+    opacity: 0;
+}
+
+.heart__survol:hover {
+    opacity: 1;
 }
 
 .fa-arrow-left {
@@ -55,35 +91,38 @@ img {
     transform: translateY(-50%);
 }
 
-.btn-arrondi {
-    display: flex;
-    width: 21.8rem;
-    height: 5rem;
+.txt-btn {
     margin-top: 2.7rem;
     font-size: 1.6rem;
-    font-family: Roboto;
+
     font-weight: 500;
     color: #fff;
     align-self: center;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(200.64deg, #9356DC -5.2%, #FF79DA 110.74%);
-    /* transform: matrix(1, 0, 0, -1, 0, 0); */
+}
+
+.btn-arrondi {
+    cursor: pointer;
+    display: flex;
+    width: 21.8rem;
+    height: 5rem;
+    background: linear-gradient(193.33deg, #9356DC -11.44%, #FF79DA 123.93%);
     border: .1rem solid #9356DC;
     border-radius: 2.5rem;
-    box-shadow: 0px .4rem 1rem rgba(0, 0, 0, 0.25);
-    transition: 4s;
+    box-shadow: 0rem .4rem 1rem rgba(0, 0, 0, 0.25);
+    transition: 3s ease-in-out;
 }
 
 .btn-arrondi:hover {
     background: linear-gradient(0deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15)), linear-gradient(200.64deg, #9356DC -5.2%, #FF79DA 110.74%);
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.35);
+    box-shadow: 0rem .4rem 1.5rem rgba(0, 0, 0, 0.35);
 }
 
 article {
     height: 6.9rem;
     width: 5.9rem;
-
+    cursor: pointer;
 }
 
 hr {
@@ -95,14 +134,14 @@ hr {
 }
 
 /******** color *****/
-
 .main-bg--color {
     color: #99E2D0
 }
 
-
 .main__container {
     width: 100%;
+    display: flex;
+    flex-direction: column;
     /* max-width: 76.8rem; */
 }
 
@@ -143,7 +182,6 @@ hr {
 }
 
 .form input {
-    font-family: Roboto;
     font-size: 1.6rem;
     margin-left: 1.7rem;
     background-color: #EAEAEA;
@@ -154,14 +192,12 @@ hr {
     outline: none;
 }
 
-
 /******************** DESCRIPTION ****************************/
 .description {
     display: flex;
     flex-direction: column;
     padding: 3.9rem 0 5.7rem 0;
     background: #F7F7F7;
-    font-family: Roboto;
 }
 
 .description__titre-section {
@@ -181,18 +217,11 @@ hr {
 }
 
 /********************** PAGE MENU **********************/
-.main__container {
-    /* background-color: #F7F7F7; */
-}
 
 .site-header a {
     height: 6.3rem;
     position: absolute;
     left: 5%;
-}
-
-.site-header i {
-    /* position: absolute; */
 }
 
 .image__menu {
@@ -205,6 +234,7 @@ hr {
 .main__menu {
     position: relative;
     padding-bottom: 4rem;
+    margin-bottom: -23px;
     z-index: 999;
     bottom: 2.3rem;
     border-radius: 4rem 4rem 0 0;
@@ -226,28 +256,40 @@ hr {
     margin-right: 5%;
 }
 
-.menu__titre i {
+.menu__heart i {
     height: 4.1rem;
+    position: absolute;
     display: flex;
     align-items: center;
 }
 
+/********* ANIMATION DE LA SECTION MENU **************/
 .section__menu {
     display: flex;
     flex-direction: column;
     padding-bottom: 4rem;
+    animation: 2s menu_animation ease-in-out;
+}
+
+.section__menu:nth-of-type(2) {
+    animation: 3s menu_animation ease-in-out;
+}
+
+.section__menu:nth-of-type(3) {
+    animation: 4s menu_animation ease-in-out;
 }
 
 .section__menu h3 {
     padding: 0 0 1rem 0;
     position: relative;
     left: 5%;
-    font-family: Roboto;
     font-weight: 300;
     font-size: 1.6rem;
 }
 
 .section__menu .article__container {
+    /* min-width à 0 pour que la div check puisse slider */
+    min-width: 0;
     width: 100%;
     padding: 1.2rem 1.5rem;
     display: flex;
@@ -258,52 +300,73 @@ hr {
     width: 90%;
     display: flex;
     margin-bottom: 1.2rem;
+    overflow: hidden;
     background-color: #fff;
     border-radius: 1.5rem;
     box-shadow: 0px 4.01149px 15.0431px rgba(0, 0, 0, 0.1);
     align-self: center;
-
+    transition: all 3s ease-in-out;
 }
 
-.checked-hide {
+.article__sous-titre h4,
+.article__titre {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.section__menu article .checked-hide {
+    display: flex;
+    flex-shrink: 0;
     width: 5.9rem;
-    /* display: flex; */
+    margin-right: -5.9rem;
     justify-content: center;
     align-items: center;
     background-color: #99E2D0;
     border-radius: 0px 15px 15px 0px;
-    animation: button-check-slide-reverse .5s ease-in-out;
-
+    transition: all .3s ease-in-out;
 }
 
-/****** Animation hover qui fait apparaitre le button check / slide de droite à gauche *****/
+.checked-hide i {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    color: #99E2D0;
+}
+
+/****** Animation hover qui fait apparaitre le bouton check / slide de droite à gauche *****/
 .section__menu article:hover .checked-hide {
     display: flex;
-    animation: button-check-slide .5s ease-out;
+    width: 5.9rem;
+    margin-right: 0;
 }
 
-@keyframes button-check-slide {
+/****** ANIMATION DE LA SECTION MENU (.section_menu) *******/
+@keyframes menu_animation {
     0% {
-        width: 0rem;
+        opacity: 0;
+        position: relative;
+        left: -100%;
+    }
+
+    50% {
+        position: relative;
+        left: 5%;
     }
 
     100% {
-        width: 5.rem;
-    }
-}
-
-@keyframes button-check-slide-reverse {
-    0% {
-        width: 5.4rem;
-    }
-
-    100% {
-        width: 0rem;
+        opacity: 1;
+        position: relative;
+        left: 0%;
     }
 }
 
 .article__titre {
-    font-family: Roboto;
     font-size: 1.8rem;
     font-weight: 500;
 }
@@ -311,23 +374,24 @@ hr {
 .article__sous-titre {
     display: flex;
     justify-content: space-between;
-    font-family: Roboto;
     font-size: 1.5rem;
     font-weight: 300;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    flex-wrap: nowrap;
 }
 
-.article__sous-titre span {
+.article__sous-titre h4 {
+    font-weight: 300;
+}
+
+.article__prix {
+    margin-left: 1rem;
     font-size: 1.5rem;
     font-weight: 700;
+    justify-content: flex-end;
 }
-
-
 
 /********************** FONCTIONNEMENT **********************/
 .fonctionnement {
+    background-color: #fff;
     display: flex;
     flex-direction: column;
     padding-top: 4.8rem;
@@ -335,9 +399,10 @@ hr {
 }
 
 .fonctionnement__titre-section {
-    margin: 0 0 2.6rem 2rem;
+    width: 85%;
+    margin-bottom: 2.6rem;
+    align-self: center;
 }
-
 
 .fonctionnement__contenu {
     display: flex;
@@ -355,7 +420,6 @@ hr {
     border-radius: 2rem;
     font-size: 1.6rem;
     font-weight: 500;
-    font-family: Roboto;
     margin-bottom: 2.5rem;
     display: flex;
     align-items: center;
@@ -390,8 +454,9 @@ hr {
 }
 
 .restaurant__titre-section {
-    margin-left: 2rem;
+    width: 85%;
     margin-bottom: 2rem;
+    align-self: center;
 }
 
 .carte-test {
@@ -400,8 +465,9 @@ hr {
 }
 
 .carte {
-    width: 90%;
+    width: 85%;
     margin-bottom: 2rem;
+    padding-bottom: 1.2rem;
     align-self: center;
     border-radius: 1.5rem;
 }
@@ -412,7 +478,6 @@ hr {
 }
 
 .carte-container {
-    font-family: Roboto;
     padding-left: 1.2rem;
     display: flex;
     flex-direction: column;
@@ -429,7 +494,6 @@ hr {
     height: 2.9rem;
     width: 8rem;
     font-size: 1.4rem;
-    font-family: Roboto;
     font-weight: 500;
     color: #008766;
     display: flex;
@@ -456,20 +520,13 @@ hr {
 .carte i {
     width: 100%;
     position: relative;
-    top: -28px;
+    top: -23px;
+    right: 5%;
     display: flex;
     justify-content: end;
 }
 
 /********* TODO : Animation du coeur *****************/
-.fa-heart {
-
-    /* position: relative;
-    top: -2rem;
-    left: 85%;
-    padding-right: 2.5rem; */
-    /* transition: 3s ease-in-out; */
-}
 
 .fa-heart:active {
     /* à remplacer par :active */
@@ -483,7 +540,6 @@ hr {
     display: flex;
     padding-top: 2.2rem;
     padding-bottom: 3.3rem;
-
 }
 
 .site-footer__contenu li {
@@ -496,7 +552,6 @@ hr {
 
 .site-footer__contenu a {
     color: #fff;
-    font-family: Roboto;
     font-size: 1.6rem;
     padding-left: 2.5rem;
     margin-bottom: .7rem;
@@ -513,10 +568,18 @@ hr {
 ******************************************************/
 @media (min-width: 768px) and (max-width: 1024px) {
 
+    .menu__titre {
+        justify-content: center;
+    }
+
+    .section__menu {
+        width: 80%;
+        margin: 0 auto;
+    }
+
     .site-footer__contenu {
         width: 100%;
         display: flex;
-        /* flex-direction: row; */
     }
 
     /* Place le footer en ligne et le centre au milieu de la page */
@@ -526,9 +589,6 @@ hr {
         flex-direction: row;
         justify-content: center;
     }
-
-    /* CSS */
-
 }
 
 /*****************************************************
@@ -546,18 +606,18 @@ hr {
     }
 
     .fonctionnement {
-        width: 65%;
         margin: 0 auto;
         display: flex;
     }
 
     .fonctionnement__titre-section {
-        margin-left: 0;
+        width: 65%;
     }
 
     .fonctionnement__contenu {
         display: flex;
-        width: 100%;
+        width: 65%;
+        margin: 0 auto;
         justify-content: space-between;
         flex-direction: row;
     }
@@ -568,7 +628,6 @@ hr {
 
     .restaurant {
         display: flex;
-        /* padding-right: 10rem; */
         flex-direction: column;
     }
 
@@ -584,7 +643,7 @@ hr {
     .carte {
         display: flex;
         flex-direction: column;
-        width: 40%;
+        width: 45%;
         margin-bottom: 5rem;
     }
 
@@ -612,7 +671,7 @@ hr {
 
     .main__menu {
         width: 75%;
-        margin: 0 auto;
+        align-self: center;
     }
 
     .section__menu {
