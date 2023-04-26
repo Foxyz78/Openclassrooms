@@ -35,31 +35,29 @@ img {
     object-fit: cover;
 }
 
-/*********************************************************
-/*****************TODO : Loader à finir ******************
-**********************************************************
-**********************************************************/
-/********** ANIMATION LOADER ********/
 .anneau__loader {
     display: inline-block;
     width: 100%;
     position: fixed;
     z-index: 3;
-    /* height: 100vh; */
+    height: 100vh;
     background-color: #fff;
-    opacity: 0.7;
-    animation: vanish 3s;
+    opacity: 0;
+    animation: vanish 3s forwards;
 }
-
 
 @keyframes vanish {
     0% {
-        height: 100%;
+        opacity: 1;
+    }
+
+    99% {
+        opacity: 1;
         transform: scale(1);
     }
 
     100% {
-        height: 0;
+        opacity: 0;
         transform: scale(0);
     }
 }
@@ -130,14 +128,16 @@ img {
     border: .1rem solid #9356DC;
     border-radius: 2.5rem;
     box-shadow: 0rem .4rem 1rem rgba(0, 0, 0, 0.25);
-    transition: .3s ease-in-out;
+    /* transform: matrix(1, 0, 0, -1, 0, 0); */
+    transition: all .4s ease-in-out;
     border: none;
 }
 
 .btn-arrondi:hover {
-    background: linear-gradient(0deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15)), linear-gradient(200.64deg, #9356DC -5.2%, #FF79DA 110.74%);
+    /* background: linear-gradient(200.64deg, #9356DC -5.2%, #FF79DA 110.74%); */
     box-shadow: 0rem .4rem 1.5rem rgba(0, 0, 0, 0.35);
-    transform: scale(1.02);
+    opacity: .8;
+
 }
 
 article {
@@ -163,7 +163,6 @@ hr {
     width: 100%;
     display: flex;
     flex-direction: column;
-    /* max-width: 76.8rem; */
 }
 
 /*************** HEADER *********************/
@@ -197,6 +196,7 @@ hr {
 
 .form {
     width: 100%;
+    box-shadow: inset 0px 2px 4px 0px rgba(0, 0, 0, .15);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -238,7 +238,6 @@ hr {
 }
 
 /********************** PAGE MENU **********************/
-
 .site-header a {
     height: 6.3rem;
     position: absolute;
@@ -301,9 +300,8 @@ hr {
 }
 
 .section__menu h3 {
-    padding: 0 0 1rem 0;
+    padding: 0 0 1rem 5%;
     position: relative;
-    left: 5%;
     font-weight: 300;
     font-size: 1.6rem;
 }
@@ -486,6 +484,7 @@ hr {
 }
 
 .carte {
+    position: relative;
     width: 85%;
     margin-bottom: 2rem;
     padding-bottom: 1.2rem;
@@ -528,6 +527,10 @@ hr {
     justify-content: center;
 }
 
+.carte__cadre__cache {
+    visibility: hidden;
+}
+
 .carte-container__nom {
     font-size: 1.8rem;
     font-weight: 700;
@@ -540,18 +543,19 @@ hr {
 
 .carte i {
     position: absolute;
-    height: 41px;
+    height: 4.1rem;
+    width: 2rem;
     display: flex;
     align-items: center;
-    top: -40px;
+    top: -4rem;
     right: 5%;
 }
 
 .restaurant__like {
-    height: 41px;
+    height: 4.1rem;
     display: flex;
     position: absolute;
-    width: 85%;
+    width: 100%;
 }
 
 
@@ -578,10 +582,10 @@ hr {
     margin-bottom: .7rem;
 }
 
-.site-footer__contenu li:nth-child(1) a {
+.site-footer__contenu li:nth-child(1) {
     font-size: 1.8rem;
     font-family: Shrikhand;
-
+    margin-bottom: 1.6rem;
 }
 
 /*****************************************************
@@ -685,9 +689,14 @@ hr {
     }
 
     /*positionnement du coeur en valeur absolu*/
+    .restaurant__like {
+        position: absolute;
+        left: 95%;
+        width: 0rem;
+    }
+
     .carte i {
         top: 232px;
-        left: 30%;
     }
 
     /****** MENU ******/
@@ -724,7 +733,7 @@ hr {
 
     /* le lien Ohmyfood du footer passe en dernière position */
     .site-footer__contenu li:nth-child(1) {
-        margin-left: 10rem;
+        margin-left: 8rem;
         order: 6;
     }
 }
