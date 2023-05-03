@@ -25,6 +25,7 @@ let slide = 0;
 const right_arrow = document.querySelector(".arrow_right");
 const left_arrow = document.querySelector(".arrow_left");
 
+// Fonction permettant d'affichant les bullets points du carroussel
 function display_dot_slider() {
 	dots.innerHTML = "<div class =\"dot dot_selected\"></div>"
 	for (i = 0; i < nb_image - 1; i++) {
@@ -36,8 +37,10 @@ function add_dot() {
 	document.querySelector(".dot:nth-child(" + (slide + 1) + ")").classList.add("dot_selected");
 }
 
-function remove_dot() {
-	document.querySelector(".dot:nth-child(" + slide + ")").classList.remove("dot_selected");
+function remove_dot(arg) {
+	if (document.querySelector(".dot:nth-child(" + slide + ")") != null) {
+		document.querySelector(".dot:nth-child(" + slide + ")").classList.remove("dot_selected");
+	}
 }
 
 display_dot_slider();
@@ -63,7 +66,8 @@ function SlideGauche() {
 	banner_img.src = "./assets/images/slideshow/" + slides[slide].image;
 	paragraphe.innerHTML = slides[slide].tagLine;
 	add_dot();
-	document.querySelector(".dot:nth-child(" + (slide + 2) + ")").classList.remove("dot_selected");
+	if (document.querySelector(".dot:nth-child(" + (slide + 2) + ")") != null)
+		document.querySelector(".dot:nth-child(" + (slide + 2) + ")").classList.remove("dot_selected");
 }
 
 right_arrow.addEventListener("click", SlideDroit);
