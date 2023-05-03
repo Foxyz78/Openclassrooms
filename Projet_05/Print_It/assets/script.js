@@ -22,6 +22,9 @@ const paragraphe = document.querySelector("p");
 const nb_image = slides.length;
 let slide = 0;
 
+const right_arrow = document.querySelector(".arrow_right");
+const left_arrow = document.querySelector(".arrow_left");
+
 function display_dot_slider() {
 	dots.innerHTML = "<div class =\"dot dot_selected\"></div>"
 	for (i = 0; i < nb_image - 1; i++) {
@@ -62,3 +65,6 @@ function SlideGauche() {
 	add_dot();
 	document.querySelector(".dot:nth-child(" + (slide + 2) + ")").classList.remove("dot_selected");
 }
+
+right_arrow.addEventListener("click", SlideDroit);
+left_arrow.addEventListener("click", SlideGauche);
