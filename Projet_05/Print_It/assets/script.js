@@ -40,7 +40,6 @@ function add_dot() {
 function remove_dot() {
 	if (document.querySelector(".dot:nth-child(" + slide + ")") != null)
 		document.querySelector(".dot:nth-child(" + slide + ")").classList.remove("dot_selected");
-
 }
 
 display_dot_slider();
