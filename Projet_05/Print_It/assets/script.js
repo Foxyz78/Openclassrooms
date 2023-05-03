@@ -37,10 +37,10 @@ function add_dot() {
 	document.querySelector(".dot:nth-child(" + (slide + 1) + ")").classList.add("dot_selected");
 }
 
-function remove_dot(arg) {
-	if (document.querySelector(".dot:nth-child(" + slide + ")") != null) {
+function remove_dot() {
+	if (document.querySelector(".dot:nth-child(" + slide + ")") != null)
 		document.querySelector(".dot:nth-child(" + slide + ")").classList.remove("dot_selected");
-	}
+
 }
 
 display_dot_slider();
