@@ -35,7 +35,6 @@ btn_reset.addEventListener("click", function () {
     const filter_all = works.filter(function (work) {
         return work.categoryId > 0 && work.categoryId < 4;
     })
-    console.log('"sqdqsqs');
     reset_gallery();
     get_work(filter_all);
 });
