@@ -226,7 +226,6 @@ li:hover {
 .portfolio__filtre {
 	display: flex;
 	justify-content: center;
-	/* margin-top: 51px; */
 }
 
 /*Bouton filtre*/
@@ -243,6 +242,7 @@ li:hover {
 	border: 1px solid #1D6154;
 	border-radius: 60px;
 	margin: 0 10px 60px 0px;
+	transition: .3s ease-in-out;
 }
 
 .portfolio__filtre span:hover {
