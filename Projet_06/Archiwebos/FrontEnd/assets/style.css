@@ -191,6 +191,14 @@ li:hover {
 	color: #B1663C;
 }
 
+a {
+	text-decoration: none;
+}
+
+a:visited {
+	color: #000;
+}
+
 #introduction {
 	display: flex;
 	align-items: center;
@@ -229,9 +237,16 @@ li:hover {
 }
 
 /*Bouton filtre*/
+.btn__round {
+	height: 37px;
+	border: 1px solid #1D6154;
+	border-radius: 60px;
+	transition: .3s ease-in-out;
+}
+
 .portfolio__filtre span {
 	display: flex;
-	height: 37px;
+	margin: 0 10px 60px 0px;
 	align-items: center;
 	padding: 0 20px;
 	font-family: 'Syne';
@@ -239,13 +254,9 @@ li:hover {
 	font-weight: 700;
 	font-size: 16px;
 	color: #1D6154;
-	border: 1px solid #1D6154;
-	border-radius: 60px;
-	margin: 0 10px 60px 0px;
-	transition: .3s ease-in-out;
 }
 
-.portfolio__filtre span:hover {
+.portfolio__filtre .btn__round:hover {
 	color: #fff;
 	background: #1D6154;
 }
@@ -260,7 +271,6 @@ li:hover {
 
 .gallery img {
 	width: 100%;
-
 }
 
 /* Formulaire Login */
@@ -280,9 +290,27 @@ li:hover {
 	align-self: center;
 }
 
+#login label {
+	font-family: 'Work Sans';
+	margin-bottom: 7px;
+}
+
 #login input {
 	width: 379px;
 	height: 51px;
+	margin-bottom: 37px;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+#login span {
+	text-align: center;
+	color: #3D3D3D;
+	text-decoration: underline;
+}
+
+#login a:visited {
+	color: #3D3D3D;
 }
 
 /* Fin Formulaire Login */
@@ -330,9 +358,15 @@ input[type="submit"] {
 	color: white;
 	background-color: #1D6154;
 	margin: 2em auto;
-	width: 180px;
+	width: 180px !important;
 	text-align: center;
 	border-radius: 60px;
+	transition: .3s;
+}
+
+input[type="submit"]:hover {
+	width: 180px;
+	background-color: #0E2F28;
 }
 
 footer nav ul {
