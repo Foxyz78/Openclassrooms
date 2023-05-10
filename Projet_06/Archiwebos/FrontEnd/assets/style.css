@@ -263,6 +263,30 @@ li:hover {
 
 }
 
+/* Formulaire Login */
+#login {
+	display: flex;
+	flex-direction: column;
+}
+
+#login h2 {
+	margin: 162px 0 37px 0;
+	text-align: center;
+}
+
+#login form {
+	display: flex;
+	flex-direction: column;
+	align-self: center;
+}
+
+#login input {
+	width: 379px;
+	height: 51px;
+}
+
+/* Fin Formulaire Login */
+
 #contact {
 	width: 50%;
 	margin: auto;
