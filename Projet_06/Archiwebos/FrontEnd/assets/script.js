@@ -4,16 +4,19 @@ const works = await fetch("http://localhost:5678/api/works").then(works => works
 // Génére la page dynamiquement avec les balises HTML
 function get_work(works) {
     const nb_work = works.length;
-    for (let i = 0; i < nb_work; i++) {
-        const figure = document.createElement("figure")
-        const img = document.createElement("img");
-        const text = document.createElement("figcaption");
+    if (document.querySelector(".gallery")) {
 
-        img.src = works[i].imageUrl;
-        text.innerHTML = works[i].title;
-        figure.appendChild(img);
-        figure.appendChild(text);
-        document.querySelector(".gallery").appendChild(figure);
+        for (let i = 0; i < nb_work; i++) {
+            const figure = document.createElement("figure")
+            const img = document.createElement("img");
+            const text = document.createElement("figcaption");
+
+            img.src = works[i].imageUrl;
+            text.innerHTML = works[i].title;
+            figure.appendChild(img);
+            figure.appendChild(text);
+            document.querySelector(".gallery").appendChild(figure);
+        }
     }
 }
 
@@ -26,7 +29,7 @@ const btn_hotel = document.querySelector(".btn-hotel");
 const btn_objet = document.querySelector(".btn-objet");
 const btn_appartement = document.querySelector(".btn-appartement");
 
-// Réinitialise la gallery en supprimant les balises enfants
+// Réinitialise la gallerie en supprimant les balises enfants la classe ".gallery"
 function reset_gallery() {
     document.querySelector(".gallery").innerHTML = "";
 }
