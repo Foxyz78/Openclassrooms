@@ -1,44 +1,53 @@
-var user = {
-    email: null,
-    password: null
-};
-
 const form = document.querySelector(".form__login");
 
+function connexion() {
+    form.addEventListener("submit", async function (event) {
+        event.preventDefault();
+        let user = {
+            email: event.target.querySelector("#email").value,
+            password: event.target.querySelector("#password").value
+        };
 
+        console.log(JSON.stringify(user));
 
-form.addEventListener("submit", function (event) {
-    event.preventDefault();
-    user.email = document.querySelector("#email").value;
-    user.password = document.querySelector("#password").value;
-    console.log(email + password);
+        let login = await fetch("http://localhost:5678/api/users/login", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        });
 
-    console.log("résultat du login : " + login.ok);
+        let response = await login;
+        console.log(response);
+        let body = await login.json();
 
-    if (login.ok) {
-        console.log("le mot de passe et l'email sont OK !");
-        window.location.href = "index.html";
-    }
-})
+        console.log("la connexion a échoué !!");
+        if (user.email == "") {
+            document.querySelector(".error-email").innerHTML = "Veuillez entrer votre e-mail !";
+            console.log("email incorrect !!");
+        }
+        if (user.password == "") {
+            document.querySelector(".error-password").innerHTML = "Veuillez entrer votre mot de passe !";
+            console.log("mot de passe incorrect !!");
+        }
+        if (login.ok) {
+            console.log("token : " + body.token);
+            window.localStorage.setItem(body.id, body.token);
+            window.location.href = "index.html";
+        }
+    })
+}
 
-console.log("variable user : " + JSON.stringify(user));
+connexion()
 
-let login = await fetch("http://localhost:5678/api/users/login", {
-    method: "POST",
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(user)
-});
-
-console.log("résultat du fecth post : " + login.ok);
 
 function check_login() {
     if (user.email == "") {
-        document.querySelector(".error").innerHTML = "Veuillez entrer un e-mail !";
+        document.querySelector(".error-email").innerHTML = "Veuillez entrer un e-mail !";
     }
     if (!login.ok) {
-        document.querySelector(".error").innerHTML = "L'E-mail et/ou le mot de passe est incorrect !";
+        document.querySelector(".error-password").innerHTML = "L'E-mail et/ou le mot de passe est incorrect !";
     }
 
     if (login.ok) {
@@ -46,7 +55,3 @@ function check_login() {
         window.location.href = "index.html";
     }
 }
-
-
-
-//check_login();
