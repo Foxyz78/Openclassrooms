@@ -8,7 +8,7 @@ function connexion() {
             password: event.target.querySelector("#password").value
         };
 
-        console.log(JSON.stringify(user));
+        //console.log(JSON.stringify(user));
 
         let login = await fetch("http://localhost:5678/api/users/login", {
             method: "POST",
@@ -18,29 +18,20 @@ function connexion() {
             body: JSON.stringify(user)
         });
 
-        let response = await login;
-        console.log(response);
+        //let response = await login;
         let body = await login.json();
 
-        console.log("la connexion a échoué !!");
-        if (user.email == "") {
-            document.querySelector(".error-email").innerHTML = "Veuillez entrer votre e-mail !";
-            console.log("email incorrect !!");
-        }
-        if (user.password == "") {
-            document.querySelector(".error-password").innerHTML = "Veuillez entrer votre mot de passe !";
-            console.log("mot de passe incorrect !!");
-        }
+        // Si l'e-mail et le mot de passe sont corrects, un token est enregistré dans le local storage 
+        //et une redirection est faite sur la page d'accueil modifier en mode édition
         if (login.ok) {
-            console.log("token : " + body.token);
-            window.localStorage.setItem(body.id, body.token);
+            window.localStorage.setItem(body.userId, body.token);
             window.location.href = "index.html";
-        }
+        } else
+            document.querySelector(".error-email").innerHTML = "“Erreur dans l’identifiant ou le mot de passe”"
     })
 }
 
 connexion()
-
 
 function check_login() {
     if (user.email == "") {
