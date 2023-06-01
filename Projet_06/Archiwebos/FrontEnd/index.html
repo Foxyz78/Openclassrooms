@@ -1,111 +1,159 @@
 <!DOCTYPE html>
 <html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sophie Bluel - Architecte d'intérieur</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="./assets/style.css" />
+  </head>
 
-<head>
-	<meta charset="UTF-8">
-	<title>Sophie Bluel - Architecte d'intérieur</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
-		rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-	<meta name="description" content="">
-	<link rel="stylesheet" href="./assets/style.css">
-</head>
+  <body>
+    <header>
+      <div class="edition mode-edition">
+        <div class="edition__content">
+          <i class="fa-regular fa-pen-to-square"></i> <span>édition</span>
+          <div class="btn__edition btn__round">Publier les changements</div>
+        </div>
+      </div>
 
-<body>
-	<header>
-		<div class="edition mode-edition">
-			<div class="edition__content">
-				<i class="fa-regular fa-pen-to-square "></i> <span>édition</span>
-				<div class="btn__edition btn__round">Publier les changements</div>
-			</div>
-		</div>
-		<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
-		<nav>
-			<ul>
-				<li>projets</li>
-				<li>contact</li>
-				<li><a href="login.html">login</a></li>
-				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
-			</ul>
-		</nav>
-	</header>
-	<main>
-		<section id="introduction">
-			<figure>
-				<img src="./assets/images/sophie-bluel.png" alt="">
-				<div class="edition__modification  mode-edition">
-					<i class="fa-regular fa-pen-to-square "></i> <span>modifier</span>
-				</div>
-			</figure>
-			<article>
-				<h2>Designer d'espace</h2>
-				<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison
-					finale du chantier.</p>
-				<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les
-					couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du
-					chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
-				<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG,
-					décorateur(trice)</p>
-			</article>
-		</section>
-		<section id="portfolio">
-			<h2>Mes Projets</h2>
-			<div class="edition__modification mode-edition">
-				<i class="fa-regular fa-pen-to-square "></i> <span>modifier</span>
-			</div>
-			<div class="portfolio__filtre">
-				<span class="btn__round btn-tous">Tous</span><span class="btn__round btn-objet">objets</span><span
-					class="btn__round btn-appartement">Appartements</span><span class="btn__round btn-hotel">Hôtel &
-					restaurants</span>
-			</div>
-			<div class="gallery">
-				<!-- Création des balises <img> et <figcaption>  
+      <h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
+      <nav>
+        <ul>
+          <li>projets</li>
+          <li>contact</li>
+          <li><a href="login.html">login</a></li>
+          <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="introduction">
+        <figure>
+          <img src="./assets/images/sophie-bluel.png" alt="" />
+          <div class="edition__modification mode-edition">
+            <i class="fa-regular fa-pen-to-square"></i> <span>modifier</span>
+          </div>
+        </figure>
+        <article>
+          <h2>Designer d'espace</h2>
+          <p>
+            Je raconte votre histoire, je valorise vos idées. Je vous accompagne
+            de la conception à la livraison finale du chantier.
+          </p>
+          <p>
+            Chaque projet sera étudié en commun, de façon à mettre en valeur les
+            volumes, les matières et les couleurs dans le respect de l’esprit
+            des lieux et le choix adapté des matériaux. Le suivi du chantier
+            sera assuré dans le souci du détail, le respect du planning et du
+            budget.
+          </p>
+          <p>
+            En cas de besoin, une équipe pluridisciplinaire peut-être constituée
+            : architecte DPLG, décorateur(trice)
+          </p>
+        </article>
+      </section>
+      <section id="portfolio">
+        <h2>Mes Projets</h2>
+        <div class="edition__modification mode-edition">
+          <i class="fa-regular fa-pen-to-square"></i> <span>modifier</span>
+        </div>
+        <div class="portfolio__filtre">
+          <span class="btn__round btn-tous">Tous</span
+          ><span class="btn__round btn-objet">objets</span
+          ><span class="btn__round btn-appartement">Appartements</span
+          ><span class="btn__round btn-hotel">Hôtel & restaurants</span>
+        </div>
+        <div class="gallery">
+          <!-- Création des balises <img> et <figcaption>  
 					Affichage des images et textes dynamiquement -->
-			</div>
-		</section>
+        </div>
+      </section>
 
-		<section id="contact">
-			<h2>Contact</h2>
-			<p>Vous avez un projet ? Discutons-en !</p>
-			<form action="" method="post">
-				<label for="name">Nom</label>
-				<input type="text" name="name" id="name">
-				<label for="email">Email</label>
-				<input type="email" name="email" id="email" value="">
-				<label for="message">Message</label>
-				<textarea name="message" id="message" cols="30" rows="10"></textarea>
-				<input type="submit" value="Envoyer">
-			</form>
-		</section>
-	</main>
-	<aside id="modal">
-		<div class="modal__content">
-			<div class="modal__header">
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>Vous avez un projet ? Discutons-en !</p>
+        <form action="" method="post">
+          <label for="name">Nom</label>
+          <input type="text" name="name" id="name" />
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" value="" />
+          <label for="message">Message</label>
+          <textarea name="message" id="message" cols="30" rows="10"></textarea>
+          <input type="submit" value="Envoyer" />
+        </form>
+      </section>
+    </main>
+    <aside id="modal">
+      <!-- MODAL pour l'affichage des travaux -->
+      <div class="modal__works modal__content">
+        <div class="modal__header">
+          <span class="close">&times;</span>
+        </div>
+        <div class="modal__main">
+          <h3>Galerie photo</h3>
+          <div class="modal__gallery">
+            <!-- contenu généré dynamiquement avec le javascript pour l'affichage des travaux-->
+          </div>
+        </div>
+        <hr class="modal__line" />
+        <div class="modal__button btn__round">Ajouter une photo</div>
+        <span class="modal__delete">Supprimer la galerie</span>
+      </div>
 
-				<span class="close">&times;</span>
-			</div>
-			<div class="modal__main">
-				<h3>Galerie photo</h3>
-				<div class="modal__gallery">
-					<div class="modal__image"></div>
-				</div>
-			</div>
-			<hr class="modal__line">
-			<div class="modal__button btn__round">Ajouter une photo</div>
-			<span class="modal__delete">Supprimer la galerie</span>
-		</div>
-	</aside>
-	<footer>
-		<nav>
-			<ul>
-				<li>Mentions Légales</li>
-			</ul>
-		</nav>
-	</footer>
-	<script type="module" src="./assets/script.js"></script>
-</body>
+      <!-- Modal pour l'ajout de photo -->
+      <div class="modal__add-image modal__content">
+        <div class="modal__header">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span class="close">&times;</span>
+        </div>
+        <div class="modal__main">
+          <h3>Ajout photo</h3>
+          <div class="box-add-image">
+            <div class="box-preview-image">
+              <i class="fa-sharp fa-regular fa-image"></i>
+            </div>
+            <div class="btn__round btn__add-image">
+              + Ajouter photo
+              <input type="file" />
+            </div>
+            <span class="image__details">jpg, png : max 4mo</span>
+          </div>
+          <div class="formulaire">
+            <label for="" class="label">Titre</label>
+            <input type="text" class="input-title" />
 
+            <label for="" class="label">Catégorie</label>
+            <select name="" id="" class="input-category">
+              <!-- Affichage de différentes catégories générées dynamiquement 
+                en JS avec les données de l'api-->
+            </select>
+          </div>
+        </div>
+        <hr class="modal__line" />
+        <input type="button" modal__button btn__round" value="Valider" disabled
+        />
+      </div>
+    </aside>
+
+    <footer>
+      <nav>
+        <ul>
+          <li>Mentions Légales</li>
+        </ul>
+      </nav>
+    </footer>
+    <script type="module" src="./assets/script.js"></script>
+  </body>
 </html>
