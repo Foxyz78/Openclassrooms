@@ -66,7 +66,7 @@
       </section>
       <section id="portfolio">
         <h2>Mes Projets</h2>
-        <div class="edition__modification mode-edition">
+        <div class="edition__modification mode-edition projet__edition">
           <i class="fa-regular fa-pen-to-square"></i> <span>modifier</span>
         </div>
         <div class="portfolio__filtre">
@@ -124,10 +124,21 @@
             <div class="box-preview-image">
               <i class="fa-sharp fa-regular fa-image"></i>
             </div>
-            <div class="btn__round btn__add-image">
+            <!-- Affichage de la preview-->
+            <img
+              src=""
+              id="image__preview"
+              alt="prévisualisation de l'image en miniature"
+            />
+            <label for="upload_file" class="btn__round btn__add-image">
               + Ajouter photo
-              <input type="file" />
-            </div>
+            </label>
+            <input
+              type="file"
+              placeholder="eneter name"
+              name="upload_file"
+              id="upload_file"
+            />
             <span class="image__details">jpg, png : max 4mo</span>
           </div>
           <div class="formulaire">
@@ -142,7 +153,12 @@
           </div>
         </div>
         <hr class="modal__line" />
-        <input type="button" modal__button btn__round" value="Valider" disabled
+        <input
+          name="valider"
+          type="button"
+          class="modal__button btn__round"
+          value="Valider"
+          disabled
         />
       </div>
     </aside>

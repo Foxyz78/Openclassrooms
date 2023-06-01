@@ -12,10 +12,12 @@ const body = document.querySelector("body");
 const arrow_left = document.querySelector(".fa-arrow-left");
 const btn_modal = document.querySelector(".modal__button");
 const gallery = document.querySelector(".modal__gallery");
-const add_image = document.querySelector(".box-add-image");
 
 const modal__works = document.querySelector(".modal__works");
 const modal__add_image = document.querySelector(".modal__add-image");
+const image_preview = document.querySelector("#image__preview");
+
+const modal = document.querySelector("#modal");
 
 // Génére la page dynamiquement avec les balises HTML
 function get_work(works) {
@@ -38,10 +40,10 @@ function get_work(works) {
   }
 }
 
-// Affichage des images
+// Affichage des images dans la gallerie
 get_work(works);
 
-// Gestion des boutons pour les filtres
+// Variables pour les boutons des filtres
 const btn_reset = document.querySelector(".btn-tous");
 const btn_hotel = document.querySelector(".btn-hotel");
 const btn_objet = document.querySelector(".btn-objet");
@@ -52,7 +54,8 @@ function reset_gallery() {
   document.querySelector(".gallery").innerHTML = "";
 }
 
-btn_reset.addEventListener("click", function () {
+// Sélection de toutes les catégories
+btn_reset.addEventListener("click", () => {
   const filter_all = works.filter(function (work) {
     return work.categoryId > 0 && work.categoryId < 4;
   });
@@ -60,7 +63,8 @@ btn_reset.addEventListener("click", function () {
   get_work(filter_all);
 });
 
-btn_objet.addEventListener("click", function () {
+// Sélection de la catégorie "objet"
+btn_objet.addEventListener("click", () => {
   const filter_objet = works.filter(function (work) {
     return work.categoryId == 1;
   });
@@ -68,7 +72,8 @@ btn_objet.addEventListener("click", function () {
   get_work(filter_objet);
 });
 
-btn_appartement.addEventListener("click", function () {
+// Sélection de la catégorie "appartement"
+btn_appartement.addEventListener("click", () => {
   const filter_appartement = works.filter(function (work) {
     return work.categoryId == 2;
   });
@@ -76,7 +81,8 @@ btn_appartement.addEventListener("click", function () {
   get_work(filter_appartement);
 });
 
-btn_hotel.addEventListener("click", function () {
+// Sélection de la catégorie "hôtel"
+btn_hotel.addEventListener("click", () => {
   const filter_hotel = works.filter(function (work) {
     return work.categoryId == 3;
   });
@@ -104,6 +110,7 @@ function open_modal(works) {
       text.innerHTML = "Editer";
 
       div.classList.add("delete-image");
+      div.setAttribute("id", works[i].id);
       figure.appendChild(div);
 
       // Affichage de de l'icone poubelle sur l'image
@@ -117,18 +124,15 @@ function open_modal(works) {
 
     suppression.forEach(function (element) {
       element.addEventListener("click", function (e) {
-        delete_image();
+        // récupère l'id de l'image à supprimer
+        const id_img = element.getAttribute("id");
+        delete_image(id_img, tokenId);
       });
     });
   }
 }
 
-function delete_image() {
-  // Todo: récupérer l'id de l'image à supprimer
-  alert("test de la suppression");
-}
-
-btn_modal.addEventListener("click", function () {
+btn_modal.addEventListener("click", () => {
   modal__add_image.style.display = "flex";
   modal__works.style.display = "none";
 });
@@ -150,16 +154,26 @@ function close_modal() {
   let btn_close = document.querySelectorAll(".close");
   btn_close.forEach((e) => {
     e.addEventListener("click", function () {
-      document.querySelector("#modal").style.display = "none";
+      modal.style.display = "none";
       body.style.backgroundColor = "#FFFEF8";
+      reset_modal();
     });
   });
 }
+
+// Fermeture de la fenêtre modale en cliquant en dehors de la fenêtre modale
+window.onclick = function (event) {
+  if (event.target === gallery) {
+    gallery.style.display = "none";
+    alert("Fermeture de la fenêtre modale");
+  }
+};
 
 open_modal(works);
 close_modal();
 
 const tokenId = window.localStorage.getItem("1");
+
 // Sélection du lien Login/logout dans la barre de navigation
 let log = document.querySelector("nav li:nth-child(3)");
 
@@ -183,17 +197,18 @@ function display_edtion_mode() {
 }
 
 // Cible la div "edition__modification" qui contient l'icone et texte modifier
-let btn__modifier = document.querySelector(".edition__modification");
+let btn__modifier = document.querySelector(".projet__edition");
 
-btn__modifier.addEventListener("click", function () {
+// Ouvre la fenêtre modale en cliquant sur le bouton "modifier"
+btn__modifier.addEventListener("click", () => {
   // Affiche la fenêtre modale
-  document.querySelector("#modal").style.display = "block";
-  // Met l'opacité du body à 30% lorsque la fenêtre modale apparaît
+  modal.style.display = "block";
   body.style.backgroundColor = "rgba(0, 0, 0, 0.3)";
   modal__add_image.style.display = "none";
   modal__works.style.display = "flex";
 });
 
+// Déconnexion et redirection sur la page "index.html"
 function log_out() {
   log.addEventListener("click", function () {
     // suppression du token et redirection
@@ -202,10 +217,106 @@ function log_out() {
   });
 }
 
+//// TODO : bouton précent pour reset /////////////////
 // Affichage de la fenêtre de dialogue précédente
-arrow_left.addEventListener("click", function () {
+arrow_left.addEventListener("click", () => {
   modal__works.style.display = "flex";
   modal__add_image.style.display = "none";
 });
 
 log_out();
+
+// Création de la fonction qui permet l'affichage des images
+function preview_image() {
+  const reader = new FileReader();
+  const file = document.querySelector("#upload_file").files[0];
+
+  reader.addEventListener(
+    "load",
+    () => {
+      image_preview.src = reader.result;
+    },
+    false
+  );
+
+  if (file) {
+    reader.readAsDataURL(file);
+    image_preview.style.display = "flex";
+    console.log(document.querySelector("#upload_file").files[0].name);
+
+    // Cache l'input pour l'upload, la span des détails et l'icone pour la preview
+    document.querySelector(".box-preview-image").style.display = "none";
+    document.querySelector(".btn__add-image").style.display = "none";
+    document.querySelector(".image__details").style.display = "none";
+
+    // Active le bouton valider
+    document
+      .querySelector(".modal__add-image .modal__button")
+      .removeAttribute("disabled");
+
+    arrow_left.addEventListener("click", () => {
+      reset_modal();
+    });
+  }
+}
+
+// TODO !Important
+if (document.querySelector(".input-title").innerHTML != "") alert("test");
+
+// Chargement de la prévisualisation de l'image upload
+upload_file.addEventListener("change", preview_image);
+
+// Réinitialisation des valeurs par défaut de la fenêtre modale
+function reset_modal() {
+  document.querySelector(".box-preview-image").style.display = "flex";
+  document.querySelector(".btn__add-image").style.display = "flex";
+  document.querySelector(".image__details").style.display = "block";
+  image_preview.src = "";
+  image_preview.style.display = "none";
+  document
+    .querySelector(".modal__add-image .modal__button")
+    .setAttribute("disabled", "disabled");
+}
+
+let input_title = document.querySelector(".input-title");
+let btn_valider = document.querySelector(".modal__add-image .modal__button");
+
+btn_valider.addEventListener("click", (e) => {
+  upload_image();
+  e.preventDefault();
+});
+
+// Upload du nouveau projet
+async function upload_image() {
+  const formData = new FormData();
+  formData.append("image", document.querySelector("#upload_file").files[0]);
+  formData.append("title", document.querySelector(".input-title").value);
+  formData.append(
+    "categoryId",
+    document.querySelector(".input-category").value
+  );
+  try {
+    const response = await fetch("http://localhost:5678/api/works", {
+      method: "POST",
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${tokenId}`,
+      },
+      body: formData,
+    });
+  } catch (error) {
+    console.log("probème de connexion");
+  }
+}
+
+// Supprime une image. Paramètre : id de l'image et le token
+function delete_image(id, token) {
+  fetch("http://localhost:5678/api/works/" + id, {
+    method: "DELETE",
+    body: null,
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }).then((response) => response.json());
+  // Todo : supprimer l'image du DOM
+}

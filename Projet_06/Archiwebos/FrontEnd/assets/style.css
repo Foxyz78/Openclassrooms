@@ -353,6 +353,7 @@ a:visited {
 }
 
 input[type="submit"] {
+  cursor: pointer;
   font-family: "Syne";
   font-weight: 700;
   color: white;
@@ -413,6 +414,7 @@ footer nav ul {
 }
 
 .close {
+  cursor: pointer;
   font-size: 25px;
   margin-left: auto;
 }
@@ -456,6 +458,12 @@ footer nav ul {
   align-items: center;
   justify-content: center;
   align-self: center;
+}
+
+.modal__button:disabled {
+  cursor: auto;
+  background-color: #a7a7a7;
+  border: none;
 }
 
 .modal__line {
@@ -514,6 +522,13 @@ footer nav ul {
   width: 456px;
 }
 
+.projet__edition {
+  cursor: pointer;
+  position: relative;
+  top: -73px;
+  left: 353px;
+}
+
 .mode-edition {
   display: none;
 }
@@ -537,6 +552,8 @@ figure .fa-trash-can {
 }
 
 .box-add-image {
+  display: flex;
+  flex-direction: column;
   width: 420px;
   height: 169px;
   margin: 0 auto 56px auto;
@@ -553,12 +570,21 @@ figure .fa-trash-can {
   background: #e8f1f7;
 }
 
+#image__preview {
+  display: none;
+  height: 169px;
+  width: 129px;
+  align-self: center;
+}
+
 .btn__add-image {
+  cursor: pointer;
   display: flex;
   width: 176px;
   height: 36px;
   margin: 31px auto 7px auto;
-  text-align: center;
+  justify-content: center;
+  align-items: center;
   color: #306685;
   background-color: #cbd6dc;
   font-family: "Work Sans", serif;
@@ -568,8 +594,6 @@ figure .fa-trash-can {
 }
 
 .image__details {
-  display: inline-block;
-  width: 100%;
   text-align: center;
   font-size: 10px;
   font-weight: 400;
@@ -607,6 +631,11 @@ figure .fa-trash-can {
   padding: 0 20px;
 }
 
+/*** Input pour l'upload de l'image ***/
+#upload_file {
+  display: none;
+}
+
 .fa-image {
   display: flex;
   font-size: 50px;
@@ -615,6 +644,7 @@ figure .fa-trash-can {
   justify-content: center;
 }
 
-.modal__button:disabled {
-  background-color: #a7a7a7;
+/* Cibles les éléments enfants du header de la modale : la croix et la fleche */
+.modal__header > * {
+  cursor: pointer;
 }
