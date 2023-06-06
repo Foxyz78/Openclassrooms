@@ -8,6 +8,9 @@ const categories = await fetch("http://localhost:5678/api/categories").then(
   (categories) => categories.json()
 );
 
+// Récupère le token dans le localStorage
+const tokenId = window.localStorage.getItem("1");
+
 const body = document.querySelector("body");
 const arrow_left = document.querySelector(".fa-arrow-left");
 const btn_modal = document.querySelector(".modal__button");
@@ -144,6 +147,8 @@ function display_categories() {
     const option = document.createElement("option");
     input_category.appendChild(option);
     option.innerHTML = categories[i].name;
+    option.value = categories[i].id;
+    // todo: rajouter une id pour les catégories
   }
 }
 
@@ -171,8 +176,6 @@ window.onclick = function (event) {
 
 open_modal(works);
 close_modal();
-
-const tokenId = window.localStorage.getItem("1");
 
 // Sélection du lien Login/logout dans la barre de navigation
 let log = document.querySelector("nav li:nth-child(3)");
@@ -242,7 +245,6 @@ function preview_image() {
   if (file) {
     reader.readAsDataURL(file);
     image_preview.style.display = "flex";
-    console.log(document.querySelector("#upload_file").files[0].name);
 
     // Cache l'input pour l'upload, la span des détails et l'icone pour la preview
     document.querySelector(".box-preview-image").style.display = "none";
@@ -259,10 +261,6 @@ function preview_image() {
     });
   }
 }
-
-// TODO !Important
-if (document.querySelector(".input-title").innerHTML != "") alert("test");
-
 // Chargement de la prévisualisation de l'image upload
 upload_file.addEventListener("change", preview_image);
 
@@ -276,14 +274,15 @@ function reset_modal() {
   document
     .querySelector(".modal__add-image .modal__button")
     .setAttribute("disabled", "disabled");
+  document.querySelector(".input-title").value = "";
 }
 
 let input_title = document.querySelector(".input-title");
 let btn_valider = document.querySelector(".modal__add-image .modal__button");
 
 btn_valider.addEventListener("click", (e) => {
-  upload_image();
   e.preventDefault();
+  upload_image();
 });
 
 // Upload du nouveau projet
@@ -291,10 +290,8 @@ async function upload_image() {
   const formData = new FormData();
   formData.append("image", document.querySelector("#upload_file").files[0]);
   formData.append("title", document.querySelector(".input-title").value);
-  formData.append(
-    "categoryId",
-    document.querySelector(".input-category").value
-  );
+  formData.append("category", document.querySelector(".input-category").value);
+
   try {
     const response = await fetch("http://localhost:5678/api/works", {
       method: "POST",
@@ -305,7 +302,7 @@ async function upload_image() {
       body: formData,
     });
   } catch (error) {
-    console.log("probème de connexion");
+    alert("probème de connexion : " + error);
   }
 }
 
@@ -320,3 +317,5 @@ function delete_image(id, token) {
   }).then((response) => response.json());
   // Todo : supprimer l'image du DOM
 }
+
+function validate_form() {}
