@@ -35,6 +35,8 @@ function get_work(works) {
 
       text.innerHTML = works[i].title;
       figure.appendChild(img);
+
+      figure.classList.add("imageId" + works[i].id);
       trash.classList.add("fa-solid", "fa-trash-can");
       figure.appendChild(trash);
       figure.appendChild(text);
@@ -97,8 +99,8 @@ btn_hotel.addEventListener("click", () => {
 function open_modal(works) {
   const nb_work = works.length;
   modal__add_image.style.display = "none";
+  modal__works.style.display = "flex";
   if (document.querySelector(".modal__gallery")) {
-    // Boucle permettant de créer la gallerie
     for (let i = 0; i < nb_work; i++) {
       const figure = document.createElement("figure");
       const img = document.createElement("img");
@@ -108,6 +110,7 @@ function open_modal(works) {
 
       // Ajoute l'id sur les images afin de les cibler pour la suppression
       img.setAttribute("id", "imageId" + works[i].id);
+      figure.classList.add("imageId" + works[i].id);
 
       img.src = works[i].imageUrl;
       text.innerHTML = "Editer";
@@ -125,11 +128,16 @@ function open_modal(works) {
     }
     const suppression = document.querySelectorAll(".delete-image");
 
+    // Suppression d'un travail
     suppression.forEach(function (element) {
       element.addEventListener("click", function (e) {
         // récupère l'id de l'image à supprimer
         const id_img = element.getAttribute("id");
         delete_image(id_img, tokenId);
+        const img_deleted = document.querySelectorAll(".imageId" + id_img);
+        img_deleted.forEach(function (e) {
+          e.remove();
+        });
       });
     });
   }
@@ -148,7 +156,6 @@ function display_categories() {
     input_category.appendChild(option);
     option.innerHTML = categories[i].name;
     option.value = categories[i].id;
-    // todo: rajouter une id pour les catégories
   }
 }
 
@@ -180,9 +187,8 @@ close_modal();
 // Sélection du lien Login/logout dans la barre de navigation
 let log = document.querySelector("nav li:nth-child(3)");
 
+// Affiche le mode édition si le token est présent
 if (tokenId) {
-  log.innerHTML = "logout";
-  //document.querySelector(".mode-edition").style.display = "flex";
   display_edtion_mode();
 }
 
@@ -193,7 +199,7 @@ function display_edtion_mode() {
   edition.forEach((e) => {
     e.style.display = "flex";
   });
-
+  log.innerHTML = "logout";
   // Suppression du filtre pour les projets
   document.querySelector(".portfolio__filtre").style.display = "none";
   document.querySelector("header").style.margin = "83px 0";
@@ -229,7 +235,7 @@ arrow_left.addEventListener("click", () => {
 
 log_out();
 
-// Création de la fonction qui permet l'affichage des images
+// Permet la prévisualisation de l'image dans le formulaire
 function preview_image() {
   const reader = new FileReader();
   const file = document.querySelector("#upload_file").files[0];
@@ -277,7 +283,6 @@ function reset_modal() {
   document.querySelector(".input-title").value = "";
 }
 
-let input_title = document.querySelector(".input-title");
 let btn_valider = document.querySelector(".modal__add-image .modal__button");
 
 btn_valider.addEventListener("click", (e) => {
@@ -301,6 +306,7 @@ async function upload_image() {
       },
       body: formData,
     });
+    open_modal(works);
   } catch (error) {
     alert("probème de connexion : " + error);
   }
