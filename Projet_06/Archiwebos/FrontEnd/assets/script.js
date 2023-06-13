@@ -1,12 +1,20 @@
-// Requête fetch pour récuperer les travaux sur l'api
-const works = await fetch("http://localhost:5678/api/works").then((works) =>
-  works.json()
-);
+// const works = await fetch("http://localhost:5678/api/works").then((works) =>
+//   works.json()
+// );
 
-// Requête fetch pour récuperer les catégories sur l'api
-const categories = await fetch("http://localhost:5678/api/categories").then(
-  (categories) => categories.json()
-);
+// const categories = await fetch("http://localhost:5678/api/categories").then(
+//   (categories) => categories.json()
+// );
+
+async function load_works() {
+  return (await fetch("http://localhost:5678/api/works")).json();
+}
+const works = await load_works();
+
+async function load_categories() {
+  return (await fetch("http://localhost:5678/api/categories")).json();
+}
+const categories = await load_categories();
 
 // Récupère le token dans le localStorage
 const tokenId = window.localStorage.getItem("1");
@@ -19,23 +27,20 @@ const gallery = document.querySelector(".modal__gallery");
 const modal__works = document.querySelector(".modal__works");
 const modal__add_image = document.querySelector(".modal__add-image");
 const image_preview = document.querySelector("#image__preview");
-
 const modal = document.querySelector("#modal");
 
 // Génére la page dynamiquement avec les balises HTML
 function get_work(works) {
-  const nb_work = works.length;
   if (document.querySelector(".gallery")) {
-    for (let i = 0; i < nb_work; i++) {
+    for (let i = 0; i < works.length; i++) {
       const figure = document.createElement("figure");
       const img = document.createElement("img");
       const text = document.createElement("figcaption");
       const trash = document.createElement("i");
-      img.src = works[i].imageUrl;
 
+      img.src = works[i].imageUrl;
       text.innerHTML = works[i].title;
       figure.appendChild(img);
-
       figure.classList.add("imageId" + works[i].id);
       trash.classList.add("fa-solid", "fa-trash-can");
       figure.appendChild(trash);
@@ -173,14 +178,19 @@ function close_modal() {
   });
 }
 
-// Fermeture de la fenêtre modale en cliquant en dehors de la fenêtre modale
-window.onclick = function (event) {
-  if (event.target === gallery) {
-    gallery.style.display = "none";
-    alert("Fermeture de la fenêtre modale");
-  }
-};
+// TODO !!!!
+document.addEventListener(
+  "click",
+  function (event) {
+    // If user either clicks X button OR clicks outside the modal window, then close modal by calling closeModal()
+    if (!event.target.closest("#modal")) {
+      //alert("model fermé");
+    }
+  },
+  false
+);
 
+//
 open_modal(works);
 close_modal();
 
@@ -231,7 +241,13 @@ function log_out() {
 arrow_left.addEventListener("click", () => {
   modal__works.style.display = "flex";
   modal__add_image.style.display = "none";
+  const input_title = document.querySelector(".input-title");
+  const h3 = document.querySelector("h3");
 });
+
+if (modal__add_image.style.display === "none") {
+  console.log("test pour le display none ou pas");
+}
 
 log_out();
 
@@ -287,7 +303,9 @@ let btn_valider = document.querySelector(".modal__add-image .modal__button");
 
 btn_valider.addEventListener("click", (e) => {
   e.preventDefault();
+  reset_gallery();
   upload_image();
+  get_work(works);
 });
 
 // Upload du nouveau projet
@@ -306,21 +324,22 @@ async function upload_image() {
       },
       body: formData,
     });
-    open_modal(works);
   } catch (error) {
     alert("probème de connexion : " + error);
   }
 }
 
 // Supprime une image. Paramètre : id de l'image et le token
-function delete_image(id, token) {
-  fetch("http://localhost:5678/api/works/" + id, {
-    method: "DELETE",
-    body: null,
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  }).then((response) => response.json());
+async function delete_image(id, token) {
+  return (
+    await fetch("http://localhost:5678/api/works/" + id, {
+      method: "DELETE",
+      body: null,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+  ).json();
   // Todo : supprimer l'image du DOM
 }
 
