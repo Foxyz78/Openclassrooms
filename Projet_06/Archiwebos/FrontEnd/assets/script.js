@@ -294,13 +294,9 @@ let btn_valider = document.querySelector(".modal__add-image .modal__button");
 btn_valider.addEventListener("click", async (e) => {
   e.preventDefault();
   reset_gallery();
+  //document.querySelector(".modal__works .modal__gallery").innerHTML = "";
   upload_image();
   close_modal();
-
-  // document.querySelector(".modal__works .modal__gallery").style.display =
-  //   "none";
-  const x = await load_works();
-  console.log(x);
 });
 
 // Upload du nouveau projet
@@ -321,6 +317,8 @@ async function upload_image() {
     });
     const works = await load_works();
     get_work(works);
+    document.querySelector(".modal__works .modal__gallery").innerHTML = "";
+    open_modal(works);
   } catch (error) {
     alert("problème de connexion : " + error);
   }
