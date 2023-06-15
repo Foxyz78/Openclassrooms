@@ -1,11 +1,3 @@
-// const works = await fetch("http://localhost:5678/api/works").then((works) =>
-//   works.json()
-// );
-
-// const categories = await fetch("http://localhost:5678/api/categories").then(
-//   (categories) => categories.json()
-// );
-
 async function load_works() {
   return (await fetch("http://localhost:5678/api/works")).json();
 }
@@ -31,22 +23,20 @@ const modal = document.querySelector("#modal");
 
 // Génére la page dynamiquement avec les balises HTML
 function get_work(works) {
-  if (document.querySelector(".gallery")) {
-    for (let i = 0; i < works.length; i++) {
-      const figure = document.createElement("figure");
-      const img = document.createElement("img");
-      const text = document.createElement("figcaption");
-      const trash = document.createElement("i");
+  for (let i = 0; i < works.length; i++) {
+    const figure = document.createElement("figure");
+    const img = document.createElement("img");
+    const text = document.createElement("figcaption");
+    const trash = document.createElement("i");
 
-      img.src = works[i].imageUrl;
-      text.innerHTML = works[i].title;
-      figure.appendChild(img);
-      figure.classList.add("imageId" + works[i].id);
-      trash.classList.add("fa-solid", "fa-trash-can");
-      figure.appendChild(trash);
-      figure.appendChild(text);
-      document.querySelector(".gallery").appendChild(figure);
-    }
+    img.src = works[i].imageUrl;
+    text.innerHTML = works[i].title;
+    figure.appendChild(img);
+    figure.classList.add("imageId" + works[i].id);
+    trash.classList.add("fa-solid", "fa-trash-can");
+    figure.appendChild(trash);
+    figure.appendChild(text);
+    document.querySelector(".gallery").appendChild(figure);
   }
 }
 
@@ -131,14 +121,21 @@ function open_modal(works) {
       figure.appendChild(text);
       document.querySelector(".modal__gallery").appendChild(figure);
     }
+
     const suppression = document.querySelectorAll(".delete-image");
 
     // Suppression d'un travail
     suppression.forEach(function (element) {
-      element.addEventListener("click", function (e) {
+      element.addEventListener("click", async function (e) {
         // récupère l'id de l'image à supprimer
         const id_img = element.getAttribute("id");
+        reset_gallery();
         delete_image(id_img, tokenId);
+        // const works = await load_works();
+        // document.querySelector(".modal__gallery").innerHTML = "";
+        // open_modal(works);
+
+        /* Suppression du work de la modale dans le DOM */
         const img_deleted = document.querySelectorAll(".imageId" + id_img);
         img_deleted.forEach(function (e) {
           e.remove();
@@ -163,34 +160,37 @@ function display_categories() {
     option.value = categories[i].id;
   }
 }
-
 display_categories();
 
 // Ferme la fenêtre modale
 function close_modal() {
-  let btn_close = document.querySelectorAll(".close");
-  btn_close.forEach((e) => {
-    e.addEventListener("click", function () {
-      modal.style.display = "none";
-      body.style.backgroundColor = "#FFFEF8";
-      reset_modal();
-    });
-  });
+  modal.style.display = "none";
+  body.style.backgroundColor = "#FFFEF8";
+  reset_form();
 }
 
-// TODO !!!!
-document.addEventListener(
-  "click",
-  function (event) {
-    // If user either clicks X button OR clicks outside the modal window, then close modal by calling closeModal()
-    if (!event.target.closest("#modal")) {
-      //alert("model fermé");
-    }
-  },
-  false
-);
+let btn_close = document.querySelectorAll(".close");
+// Ferme la fenêtre modale en cliquant sur la croix
+btn_close.forEach((e) => {
+  e.addEventListener("click", function () {
+    close_modal();
+    reset_form();
+  });
+});
 
-//
+// Ferme la modale en cliquant à l'extérieure
+document.addEventListener("click", function (event) {
+  if (modal.style.display == "block") {
+    if (
+      !event.target.closest("#modal") &&
+      !event.target.closest(".mode-edition") &&
+      !event.target.closest(".delete-image")
+    ) {
+      close_modal();
+    }
+  }
+});
+
 open_modal(works);
 close_modal();
 
@@ -235,26 +235,26 @@ function log_out() {
     window.location.href = "index.html";
   });
 }
+log_out();
 
-//// TODO : bouton précent pour reset /////////////////
 // Affichage de la fenêtre de dialogue précédente
 arrow_left.addEventListener("click", () => {
-  modal__works.style.display = "flex";
-  modal__add_image.style.display = "none";
+  /* reset modal adding image en cliquant sur le bouton retour */
+  const image_preview = document.querySelector(".box-preview-image");
   const input_title = document.querySelector(".input-title");
-  const h3 = document.querySelector("h3");
+  if (image_preview.style.display == "none" || input_title.value != "") {
+    reset_form();
+  } else {
+    modal__works.style.display = "flex";
+    modal__add_image.style.display = "none";
+  }
 });
-
-if (modal__add_image.style.display === "none") {
-  console.log("test pour le display none ou pas");
-}
-
-log_out();
 
 // Permet la prévisualisation de l'image dans le formulaire
 function preview_image() {
   const reader = new FileReader();
   const file = document.querySelector("#upload_file").files[0];
+  const input_title = document.querySelector(".input-title");
 
   reader.addEventListener(
     "load",
@@ -273,39 +273,34 @@ function preview_image() {
     document.querySelector(".btn__add-image").style.display = "none";
     document.querySelector(".image__details").style.display = "none";
 
-    // Active le bouton valider
-    document
-      .querySelector(".modal__add-image .modal__button")
-      .removeAttribute("disabled");
-
     arrow_left.addEventListener("click", () => {
-      reset_modal();
+      reset_form();
     });
   }
 }
 // Chargement de la prévisualisation de l'image upload
 upload_file.addEventListener("change", preview_image);
 
-// Réinitialisation des valeurs par défaut de la fenêtre modale
-function reset_modal() {
+// Réinitialisation des valeurs par défaut du formaulaire de la fenêtre modale
+function reset_form() {
   document.querySelector(".box-preview-image").style.display = "flex";
   document.querySelector(".btn__add-image").style.display = "flex";
   document.querySelector(".image__details").style.display = "block";
-  image_preview.src = "";
   image_preview.style.display = "none";
-  document
-    .querySelector(".modal__add-image .modal__button")
-    .setAttribute("disabled", "disabled");
-  document.querySelector(".input-title").value = "";
+  document.querySelector(".formulaire").reset();
 }
 
 let btn_valider = document.querySelector(".modal__add-image .modal__button");
-
-btn_valider.addEventListener("click", (e) => {
+btn_valider.addEventListener("click", async (e) => {
   e.preventDefault();
   reset_gallery();
   upload_image();
-  get_work(works);
+  close_modal();
+
+  // document.querySelector(".modal__works .modal__gallery").style.display =
+  //   "none";
+  const x = await load_works();
+  console.log(x);
 });
 
 // Upload du nouveau projet
@@ -316,7 +311,7 @@ async function upload_image() {
   formData.append("category", document.querySelector(".input-category").value);
 
   try {
-    const response = await fetch("http://localhost:5678/api/works", {
+    await fetch("http://localhost:5678/api/works", {
       method: "POST",
       headers: {
         accept: "application/json",
@@ -324,23 +319,44 @@ async function upload_image() {
       },
       body: formData,
     });
+    const works = await load_works();
+    get_work(works);
   } catch (error) {
-    alert("probème de connexion : " + error);
+    alert("problème de connexion : " + error);
   }
 }
 
 // Supprime une image. Paramètre : id de l'image et le token
 async function delete_image(id, token) {
-  return (
+  try {
     await fetch("http://localhost:5678/api/works/" + id, {
       method: "DELETE",
       body: null,
       headers: {
         Authorization: `Bearer ${token}`,
       },
-    })
-  ).json();
-  // Todo : supprimer l'image du DOM
+    });
+    const works = await load_works();
+    get_work(works);
+  } catch (error) {
+    alert("problème de connexion : " + error);
+  }
 }
 
-function validate_form() {}
+// Active le bouton "valider" si les champs du formulaire sont remplis"
+function validate_form() {
+  const input_title = document.querySelector(".input-title");
+
+  input_title.addEventListener("keyup", (e) => {
+    const value = e.target.value;
+    const submit_button = document.querySelector(
+      ".modal__add-image .modal__button"
+    );
+    submit_button.disabled = false;
+    if (value === "") {
+      submit_button.disabled = true;
+    }
+  });
+}
+
+validate_form();
