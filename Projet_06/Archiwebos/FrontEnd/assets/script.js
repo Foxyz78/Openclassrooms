@@ -33,7 +33,7 @@ function get_work(works) {
     text.innerHTML = works[i].title;
     figure.appendChild(img);
     figure.classList.add("imageId" + works[i].id);
-    trash.classList.add("fa-solid", "fa-trash-can");
+    //trash.classList.add("fa-solid", "fa-trash-can");
     figure.appendChild(trash);
     figure.appendChild(text);
     document.querySelector(".gallery").appendChild(figure);
