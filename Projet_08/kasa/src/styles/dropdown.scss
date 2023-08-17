@@ -1,0 +1,12 @@
+@import "color.scss";
+
+/**************************************************************** ANimations ******************************** */
+@keyframes slideDownAnimation {
+  from {
+    transform: translateY(-100%);
+  }
+
+  to {
+    transform: translateY(0%);
+  }
+}

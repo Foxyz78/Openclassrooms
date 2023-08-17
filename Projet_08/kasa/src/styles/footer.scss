@@ -1,0 +1,27 @@
+@import "color.scss";
+
+.footer {
+  background-color: $footer_background;
+  height: 209px;
+  color: $font;
+  ul {
+    flex-direction: column;
+    justify-content: center;
+    li {
+      color: $font;
+      align-self: center;
+      .footer-logo {
+        width: 122px;
+        display: flex;
+        justify-content: space-between;
+        align-self: center;
+      }
+    }
+  }
+}
+
+.footer-container {
+  width: 513px;
+  display: flex;
+  margin: 0 auto;
+}

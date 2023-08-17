@@ -27,14 +27,14 @@ function get_work(works) {
     const figure = document.createElement("figure");
     const img = document.createElement("img");
     const text = document.createElement("figcaption");
-    const trash = document.createElement("i");
+    //const trash = document.createElement("i");
 
     img.src = works[i].imageUrl;
     text.innerHTML = works[i].title;
     figure.appendChild(img);
     figure.classList.add("imageId" + works[i].id);
     //trash.classList.add("fa-solid", "fa-trash-can");
-    figure.appendChild(trash);
+    //figure.appendChild(trash);
     figure.appendChild(text);
     document.querySelector(".gallery").appendChild(figure);
   }

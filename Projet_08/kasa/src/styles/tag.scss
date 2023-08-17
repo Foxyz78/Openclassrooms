@@ -1,0 +1,15 @@
+@import "color.scss";
+
+.tag-content {
+  width: 115px;
+  height: 25px;
+  background-color: $primary;
+  border-radius: 10px;
+  h4 {
+    text-align: center;
+    color: $font;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 500;
+  }
+}
