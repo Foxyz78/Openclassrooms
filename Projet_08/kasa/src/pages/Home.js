@@ -13,7 +13,7 @@ async function loadLogements() {
 }
 const logements = await loadLogements();
 
-const Home = (props) => {
+const Home = () => {
   return (
     <>
       <div className="header">

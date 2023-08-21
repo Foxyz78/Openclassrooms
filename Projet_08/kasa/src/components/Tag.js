@@ -1,10 +1,10 @@
 import "../styles/tag.scss";
 
-const Tag = () => {
+const Tag = (props) => {
   return (
     <>
       <div className="tag-content">
-        <h4>mon tag</h4>
+        <h4>{props.tag}</h4>
       </div>
     </>
   );

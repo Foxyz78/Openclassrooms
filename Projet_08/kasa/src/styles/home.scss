@@ -15,3 +15,13 @@
   justify-content: space-around;
   background-color: $secondary;
 }
+
+/* ================================================================= Responsive Mobile styles ********************************/
+
+@media (max-width: 768px) {
+  /* Responsive Mobile*/
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+}

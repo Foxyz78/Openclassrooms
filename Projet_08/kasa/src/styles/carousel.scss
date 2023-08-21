@@ -1,0 +1,22 @@
+@import "color.scss";
+
+.carousel {
+  width: 1240px;
+  margin: 0 auto;
+  position: relative;
+  .carousel-images {
+    width: 1240px;
+    height: 415px;
+    object-fit: cover;
+  }
+  p {
+    position: absolute;
+    left: 50%;
+    top: 85%;
+    color: #fff;
+    font-family: Montserrat;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+  }
+}
