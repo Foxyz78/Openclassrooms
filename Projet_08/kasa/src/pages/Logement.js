@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Dropdown from "../components/Dropdown";
 import Tag from "../components/Tag";
-import Carousel from "../components/Carousel";
+
 import "../styles/logement.scss";
 import "../styles/dropdown.scss";
 
@@ -13,6 +14,23 @@ const Logement = () => {
   const location = useLocation();
   const propsData = location.state;
   const numberImages = propsData.pictures.length;
+
+  // Iteration du nombre d'étoiles, stock une icone dans un tableau et retourne le tableau
+  const createStars = () => {
+    const rating = propsData.rating;
+    let stars = [];
+
+    for (let i = 0; i < rating; i++) {
+      stars.push(
+        <FontAwesomeIcon
+          icon="fa-solid fa-star"
+          size="xl"
+          style={{ color: "#ff6060" }}
+        />
+      );
+    }
+    return stars;
+  };
 
   // usestate pour le slide du carrousel
   const [slide, setSlide] = useState(0);
@@ -53,21 +71,11 @@ const Logement = () => {
           src="../images/arrow-right.png"
           alt="flêche de droite"
         />
-        {/* TODO : Aficher le numéro de l'image dans l'indicaeur */}
         <p>
           {indicator}/{numberImages}
         </p>
-        {/* <span>
-          {propsData.pictures.map((pictures, index) => {
-            console.log(index + 1);
-            return (
-              <span>
-                {index + 1}/{numberImages}
-              </span>
-            );
-          })}
-        </span> */}
       </div>
+
       <div className="main-container" id="">
         <div className="info">
           <div className="info-logement">
@@ -95,7 +103,34 @@ const Logement = () => {
               })}
             </div>
             <div className="star">
-              <img src="./images/star.png" alt="étoiles" />
+              <div className="star-red">{createStars()}</div>
+              <div className="star-white">
+                <FontAwesomeIcon
+                  icon="fa-solid fa-star"
+                  size="xl"
+                  style={{ color: "#e3e3e3" }}
+                />
+                <FontAwesomeIcon
+                  icon="fa-solid fa-star"
+                  size="xl"
+                  style={{ color: "#e3e3e3" }}
+                />
+                <FontAwesomeIcon
+                  icon="fa-solid fa-star"
+                  size="xl"
+                  style={{ color: "#e3e3e3" }}
+                />
+                <FontAwesomeIcon
+                  icon="fa-solid fa-star"
+                  size="xl"
+                  style={{ color: "#e3e3e3" }}
+                />
+                <FontAwesomeIcon
+                  icon="fa-solid fa-star"
+                  size="xl"
+                  style={{ color: "#e3e3e3" }}
+                />
+              </div>
             </div>
           </div>
 

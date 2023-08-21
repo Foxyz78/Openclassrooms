@@ -109,6 +109,12 @@
   display: flex;
   margin: 20px 0 24px 0;
   justify-content: space-between;
+  .star {
+    position: relative;
+    .star-red {
+      position: absolute;
+    }
+  }
   .tag-container {
     display: flex;
     flex-direction: row;
