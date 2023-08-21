@@ -17,10 +17,6 @@ const Logement = () => {
 
   const numberImages = propsData.pictures.length;
 
-  const myArray = propsData.equipements;
-  console.log(myArray);
-
-  // console.log("tags : " + propsData.tags);
   let pictures = propsData.pictures;
   const slideToRight = () => {
     for (let i = 0; i < numberImages; i++) {
@@ -100,9 +96,9 @@ const Logement = () => {
                 content_dropdown={propsData.equipements.map(
                   (equipement, index) => {
                     return (
-                      <p key={index} className="tag-name">
+                      <span key={index} className="tag-name">
                         {equipement}
-                      </p>
+                      </span>
                     );
                   }
                 )}
