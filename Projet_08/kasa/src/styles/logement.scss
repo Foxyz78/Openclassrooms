@@ -10,13 +10,16 @@
 }
 
 .carousel {
+  display: flex;
   width: 1240px;
+  height: 415px;
   margin: 0 auto;
   position: relative;
-  .caroussel-images {
+  .slide {
     width: 1240px;
     height: 415px;
     object-fit: cover;
+    border-radius: 25px;
   }
   p {
     position: absolute;
@@ -30,17 +33,21 @@
   }
 }
 
-.arrow-left {
+.arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  cursor: pointer;
+}
+.arrow-left {
   margin-left: 24px;
 }
 .arrow-right {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  margin-left: -70px;
+  margin-left: 95%;
+}
+
+.slide-hidden {
+  display: none;
 }
 
 .info-logement {

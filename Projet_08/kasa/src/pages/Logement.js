@@ -1,58 +1,72 @@
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Dropdown from "../components/Dropdown";
 import Tag from "../components/Tag";
 import Carousel from "../components/Carousel";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import "../styles/logement.scss";
 import "../styles/dropdown.scss";
-import { render } from "@testing-library/react";
 
 const Logement = () => {
   const location = useLocation();
   const propsData = location.state;
-
   const numberImages = propsData.pictures.length;
 
-  let pictures = propsData.pictures;
+  // usestate pour le slide du carrousel
+  const [slide, setSlide] = useState(0);
+  const [indicator, setIndicator] = useState(1);
+
   const slideToRight = () => {
-    for (let i = 0; i < numberImages; i++) {
-      pictures = propsData.pictures[i];
-    }
-    return <img className="carousel-images" src={pictures} alt="" />;
+    setSlide(slide === numberImages - 1 ? 0 : slide + 1);
+    setIndicator(indicator === numberImages ? 1 : indicator + 1);
   };
   const slideToLeft = () => {
-    for (let i = 0; i < numberImages; i--) {}
+    setSlide(slide === 0 ? numberImages - 1 : slide - 1);
+    setIndicator(indicator === 1 ? numberImages : indicator - 1);
   };
-
-  function test() {
-    alert("Ceci est un test pour le listener...");
-    const src = <img className="carousel-images" src="ezez" alt="" />;
-  }
 
   return (
     <>
       <Navbar />
       <div className="carousel">
         <img
-          onClick={() => test()}
-          className="arrow-left"
+          onClick={slideToLeft}
+          className="arrow arrow-left"
           src="../images/arrow-left.png"
           alt="flêche de gauche"
         />
-        <img className="carousel-images" src={propsData.pictures[0]} alt="" />
-        {/* {propsData.pictures.map((pictures, index) => {
-          return <img className="carousel-images" src={pictures} alt="" />;
-        })} */}
+        {propsData.pictures.map((pictures, index) => {
+          return (
+            <img
+              key={index}
+              className={slide === index ? "slide" : "slide slide-hidden"}
+              src={pictures}
+              alt={propsData.title}
+            />
+          );
+        })}
         <img
-          className="arrow-right"
+          onClick={slideToRight}
+          className="arrow arrow-right"
           src="../images/arrow-right.png"
           alt="flêche de droite"
         />
-        <p>1/{numberImages}</p>
+        {/* TODO : Aficher le numéro de l'image dans l'indicaeur */}
+        <p>
+          {indicator}/{numberImages}
+        </p>
+        {/* <span>
+          {propsData.pictures.map((pictures, index) => {
+            console.log(index + 1);
+            return (
+              <span>
+                {index + 1}/{numberImages}
+              </span>
+            );
+          })}
+        </span> */}
       </div>
       <div className="main-container" id="">
         <div className="info">
@@ -72,6 +86,7 @@ const Logement = () => {
               />
             </div>
           </div>
+
           <div className="tag-star">
             <div className="tag-container">
               {/* retourne le nombre de tag et les affiche */}
@@ -83,6 +98,7 @@ const Logement = () => {
               <img src="./images/star.png" alt="étoiles" />
             </div>
           </div>
+
           <div className="dropdown">
             <div className="description">
               <Dropdown
@@ -90,6 +106,7 @@ const Logement = () => {
                 content_dropdown={propsData.description}
               />
             </div>
+
             <div className="equipement">
               <Dropdown
                 title="Equipement"
@@ -111,4 +128,5 @@ const Logement = () => {
     </>
   );
 };
+
 export default Logement;
