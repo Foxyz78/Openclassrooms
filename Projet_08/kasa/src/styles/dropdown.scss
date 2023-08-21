@@ -9,6 +9,14 @@
     // animation-name: ex;
     // animation-duration: 4s;
     background-color: $secondary;
+    .content-dropdown {
+      flex-direction: column;
+    }
+    .tag-name {
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+    }
   }
   p {
     display: none;
@@ -41,6 +49,7 @@
     display: none;
   }
 }
+
 /**************************************************************** ANimations ******************************** */
 @keyframes slideDownAnimation {
   from {

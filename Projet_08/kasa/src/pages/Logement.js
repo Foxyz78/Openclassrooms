@@ -97,7 +97,15 @@ const Logement = () => {
             <div className="equipement">
               <Dropdown
                 title="Equipement"
-                content_dropdown={propsData.equipements}
+                content_dropdown={propsData.equipements.map(
+                  (equipement, index) => {
+                    return (
+                      <p key={index} className="tag-name">
+                        {equipement}
+                      </p>
+                    );
+                  }
+                )}
               />
             </div>
           </div>
