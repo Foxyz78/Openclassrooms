@@ -4,23 +4,25 @@
   width: 340px;
   height: 340px;
   border-radius: 10px;
-  background-color: $primary;
+  //background-color: $primary;
   margin: 20px 0;
   .thumb-title {
     color: #fff;
     font-size: 18px;
     font-weight: 500;
-    //margin: 268px 20px 20px 20px;
     margin: 0;
   }
+
   .cover {
     position: relative;
   }
+
   .cover h3 {
     position: absolute;
     top: 85%;
     margin: 0 20px 20px 20px;
   }
+
   .imageCover {
     width: 340px;
     height: 340px;

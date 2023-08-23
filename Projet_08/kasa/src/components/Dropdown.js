@@ -1,21 +1,21 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import "../styles/dropdown.scss";
+import { useEffect } from "react";
 
+// Utilisation du hook useRef afin de manipuler le dom en passant les references
 const Dropdown = (props) => {
-  const refContent_dropDown = useRef();
-  const refArrowUp = useRef();
-  const refArrowDown = useRef();
+  const arrowSrc = "../images/arrow_up.png";
+  const refHeight = useRef();
 
-  const handleShow = () => {
-    refContent_dropDown.current.style.display = "flex";
-    refArrowDown.current.style.display = "flex";
-    refArrowUp.current.style.display = "none";
-  };
+  const [toggle, setToggle] = useState(false);
+  const [heightEl, setheightEl] = useState(false);
 
-  const handleHide = () => {
-    refContent_dropDown.current.style.display = "none";
-    refArrowUp.current.style.display = "flex";
-    refArrowDown.current.style.display = "none";
+  useEffect(() => {
+    setheightEl(`${refHeight.current.scrollHeight}px`);
+  }, []);
+
+  const toggleState = () => {
+    setToggle(!toggle);
   };
 
   return (
@@ -24,20 +24,22 @@ const Dropdown = (props) => {
         <div className="title-dropdown">
           <h2 className="">{props.title}</h2>
           <img
-            ref={refArrowUp}
-            className="arrow-dropdown-up"
-            src="../images/arrow_up.png"
-            onClick={handleShow}
-          />
-          <img
-            ref={refArrowDown}
-            className="arrow-dropdown-down"
-            src="../images/arrow_down.png"
-            onClick={handleHide}
+            onClick={toggleState}
+            className={toggle ? "active" : undefined}
+            src={arrowSrc}
           />
         </div>
-        <div className="dropdown-container">
-          <p className="content-dropdown" ref={refContent_dropDown}>
+        <div
+          className={
+            toggle ? "dropdown-container animated" : "dropdown-container"
+          }
+          style={{ height: toggle ? `${heightEl}` : "0px" }}
+          ref={refHeight}
+        >
+          <p
+            aria-hidden={toggle ? "true" : "false"}
+            className="content-dropdown"
+          >
             {props.content_dropdown}
           </p>
         </div>

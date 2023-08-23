@@ -5,10 +5,13 @@
   margin: 38px 0;
   border-radius: 5px;
   .dropdown-container {
-    //animation
-    // animation-name: ex;
-    // animation-duration: 4s;
     background-color: $secondary;
+
+    // animation du dropdown
+    height: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, height 0.3s ease-in-out;
+
     .content-dropdown {
       flex-direction: column;
     }
@@ -19,15 +22,13 @@
     }
   }
   p {
-    display: none;
     padding: 20px;
     margin: 0;
     color: $primary;
     border-radius: 10px 10px 5px 5px;
-    // animation-name: ex;
-    // animation-duration: 4s;
   }
 }
+
 .title-dropdown {
   display: flex;
   height: 52px;
@@ -37,6 +38,14 @@
   align-items: center;
   padding-left: 20px;
   padding-right: 20px;
+  img {
+    cursor: pointer;
+    transform: rotate(0deg);
+  }
+  img.active {
+    transform: rotate(-180deg);
+    transition: transform 0.2s ease-in-out;
+  }
   h2 {
     color: $font;
     font-family: Montserrat;
@@ -50,13 +59,8 @@
   }
 }
 
-/**************************************************************** ANimations ******************************** */
-@keyframes slideDownAnimation {
-  from {
-    transform: translateY(-100%);
-  }
-
-  to {
-    transform: translateY(0%);
-  }
+/******* Animation ****/
+.animated {
+  opacity: 1 !important;
+  transition: all 0.3s ease-in-out !important;
 }
