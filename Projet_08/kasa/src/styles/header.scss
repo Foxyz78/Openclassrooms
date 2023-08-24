@@ -31,3 +31,16 @@ a {
 .activeLink {
   text-decoration: underline;
 }
+
+@media (max-width: 768px) {
+  .navLinks {
+    width: 100%;
+    margin: 0;
+    a {
+      font-size: 12px;
+    }
+    ul {
+      align-items: center;
+    }
+  }
+}

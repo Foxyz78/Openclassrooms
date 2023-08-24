@@ -11,7 +11,7 @@
 .banner {
   position: relative;
   margin: 0 auto;
-  width: 1240px;
+  width: 100%;
 
   h2 {
     margin: 0;
@@ -23,4 +23,10 @@
     left: 50%;
     transform: translate(-50%, -50%);
   }
+}
+
+@media (max-width: 768px) {
+  // .navLinks {
+  //   width: 100%;
+  // }
 }

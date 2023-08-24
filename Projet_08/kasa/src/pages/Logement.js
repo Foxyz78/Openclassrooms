@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import Navbar from "../components/Navbar";
+import Navbar from "../components/Header";
 import Footer from "../components/Footer";
 import Dropdown from "../components/Dropdown";
 import Tag from "../components/Tag";

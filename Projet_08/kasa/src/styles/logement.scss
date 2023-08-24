@@ -127,3 +127,32 @@
     margin: 0;
   }
 }
+
+@media (max-width: 1024px) {
+  .carousel {
+    width: 90%;
+  }
+  .dropdown {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel {
+    width: 90%;
+    .arrow-right {
+      margin-right: 85%;
+    }
+    .slide {
+      width: 100%;
+    }
+  }
+  .dropdown {
+    display: flex;
+    flex-direction: column;
+    .wrapper-dropdown {
+      width: 100%;
+    }
+  }
+}

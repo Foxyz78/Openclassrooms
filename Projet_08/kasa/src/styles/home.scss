@@ -8,7 +8,7 @@
 
 .gallery {
   display: flex;
-  width: 1240px;
+  width: 100%;
   border-radius: 25px;
   padding: 56px 0 0 0;
   margin: 43px 0 50px 0;
@@ -28,10 +28,12 @@
   .main-container {
     display: flex;
     flex-direction: column;
+    width: 100%;
   }
 
   .gallery {
     flex-direction: column;
+    background-color: #fff;
     .card {
       display: flex;
       width: 100%;

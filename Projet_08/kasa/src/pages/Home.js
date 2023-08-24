@@ -1,7 +1,6 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
 
-import Navbar from "../components/Navbar";
+import Header from "../components/Header";
 import Banner from "../components/Banner";
 import Thumb from "../components/Thumb";
 import Footer from "../components/Footer";
@@ -16,9 +15,7 @@ const logements = await loadLogements();
 const Home = () => {
   return (
     <>
-      <div className="header">
-        <Navbar />
-      </div>
+      <Header />
       <div className="main-container">
         <Banner
           srcImage={$bannerHome}

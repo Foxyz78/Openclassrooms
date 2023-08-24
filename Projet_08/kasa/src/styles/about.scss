@@ -4,24 +4,32 @@ body {
   min-height: 100vh;
 }
 
-.hide {
-  display: none;
+.container-about {
+  width: 1024px;
 }
+
 .main-content {
   flex: 1 0 auto;
   padding: 20px;
 }
 
-/// animation du p
-///
-@keyframes ex {
-  from {
-    margin-top: 60px;
-    height: 0%;
+@media (max-width: 1024px) {
+  .navLinks {
+    width: 100%;
   }
+  .main-container {
+    width: 90% !important;
+  }
+  .container-about {
+    width: 100%;
+  }
+}
 
-  to {
-    margin-top: 0px;
-    height: 100%;
+@media (max-width: 768px) {
+  .main-container {
+    width: 90% !important;
+  }
+  .container-about {
+    width: 100%;
   }
 }

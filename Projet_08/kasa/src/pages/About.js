@@ -2,40 +2,22 @@ import React, { useEffect } from "react";
 
 import Banner from "../components/Banner";
 import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
+import Header from "../components/Header";
 import Dropdown from "../components/Dropdown";
 import "../styles/about.scss";
 
-const p = document.querySelector(".content-dropdown");
-const arrowUp = document.querySelector(".arrow-dropdown-up");
-const arrowDown = document.querySelector(".arrow-dropdown-down");
-
 const $bannerAbout = "./images/banner-about.jpg";
-
-function show() {
-  p.style.display = "flex";
-  arrowDown.style.display = "flex";
-  arrowUp.style.display = "none";
-}
-
-function hide() {
-  p.style.display = "none";
-  arrowUp.style.display = "flex";
-  arrowDown.style.display = "none";
-}
 
 const About = () => {
   return (
     <>
-      <header>
-        <Navbar />
-      </header>
+      <Header />
       <div className="main-container">
         <Banner
           srcImage={$bannerAbout}
           altImage="montagnes avec une rivière qui coule au milieu"
         />
-        <div className="">
+        <div className="container-about">
           <Dropdown
             title="Fiabilité"
             content_dropdown="Les annonces passées sur Kasa garantissent une fiabilité totale. Les
