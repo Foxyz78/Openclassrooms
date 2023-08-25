@@ -66,11 +66,20 @@
     margin: 0;
     font-size: 18px;
   }
+
+  .title-container {
+    margin-bottom: 21px;
+    .title {
+      height: 51px;
+      //width: 635px;
+    }
+  }
 }
 
 .host {
   display: flex;
   height: 64px;
+  margin-bottom: 21px;
   flex-direction: row;
   align-items: center;
   .name {
@@ -101,28 +110,29 @@
   }
 }
 
-.star img {
-  margin-left: auto;
+.star {
+  img {
+    margin-left: auto;
+  }
+  .star-red {
+    position: absolute;
+    display: flex;
+    gap: 8px;
+  }
+  .star-white {
+    display: flex;
+    gap: 8px;
+  }
 }
 
-.tag-star {
+.tag-container {
   display: flex;
-  margin: 20px 0 24px 0;
-  justify-content: space-between;
-  .star {
-    position: relative;
-    .star-red {
-      position: absolute;
-    }
+  flex-direction: row;
+  padding-right: 10px;
+  .tag-content {
+    margin-right: 10px;
   }
-  .tag-container {
-    display: flex;
-    flex-direction: row;
-    padding-right: 10px;
-    .tag-content {
-      margin-right: 10px;
-    }
-  }
+
   h4 {
     margin: 0;
   }
@@ -139,18 +149,79 @@
 }
 
 @media (max-width: 768px) {
+  .title-container {
+    .title {
+      height: 46px;
+      font-size: 18px;
+    }
+    h2 {
+      font-size: 14px;
+    }
+  }
+
+  .info-logement {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    .host-star {
+      width: 100%;
+      display: flex;
+      //margin: 20px 0;
+      flex-direction: row-reverse;
+      align-items: center;
+      justify-content: space-between;
+      .host {
+        margin-bottom: 0;
+        .name {
+          justify-content: end;
+          p {
+            font-size: 12px;
+          }
+        }
+        .host-image {
+          width: 32px;
+          height: 32px;
+        }
+      }
+      .star {
+        .star-red {
+          gap: 1px;
+        }
+        .star-white {
+          gap: 1px;
+        }
+      }
+    }
+    .tag {
+      .tag-content {
+        width: 84px;
+      }
+      h4 {
+        font-size: 10px;
+      }
+    }
+  }
+
   .carousel {
     width: 90%;
-    .arrow-right {
-      margin-right: 85%;
-    }
+    height: 255px;
     .slide {
       width: 100%;
+      height: 100%;
     }
+  }
+  .arrow {
+    width: 24px;
+  }
+  .arrow-right {
+    margin-left: 90% !important;
   }
   .dropdown {
     display: flex;
     flex-direction: column;
+    .description .wrapper-dropdown {
+      margin: 0;
+    }
     .wrapper-dropdown {
       width: 100%;
     }

@@ -26,7 +26,16 @@
 }
 
 @media (max-width: 768px) {
-  // .navLinks {
-  //   width: 100%;
-  // }
+  .banner {
+    height: 111px;
+    width: 90%;
+    margin: 0;
+    h2 {
+      width: 217px;
+      font-size: 24px;
+    }
+    .banner-img {
+      height: 100%;
+    }
+  }
 }

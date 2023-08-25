@@ -19,7 +19,7 @@ const Home = () => {
       <div className="main-container">
         <Banner
           srcImage={$bannerHome}
-          bannerTitle=""
+          bannerTitle="Chez vous, partout et ailleurs"
           altImage="paysage montrant de vagues se fracassant sur une falaise"
         />
 

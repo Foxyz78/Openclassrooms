@@ -79,57 +79,61 @@ const Logement = () => {
       <div className="main-container" id="">
         <div className="info">
           <div className="info-logement">
-            <div className="title">
-              <h1 className="title">{propsData.title}</h1>
-              <h2 className="location">{propsData.location}</h2>
-            </div>
-            <div className="host">
-              <div className="name">
-                <p>{propsData.host.name}</p>
+            <div className="title-tag">
+              <div className="title-container">
+                <h1 className="title">{propsData.title}</h1>
+                <h2 className="location">{propsData.location}</h2>
               </div>
-              <img
-                className="host-image"
-                src={propsData.host.picture}
-                alt="photo du proprio"
-              />
-            </div>
-          </div>
 
-          <div className="tag-star">
-            <div className="tag-container">
-              {/* retourne le nombre de tag et les affiche */}
-              {propsData.tags.map((tag, index) => {
-                return <Tag key={index} tag={tag} />;
-              })}
+              <div className="tag">
+                <div className="tag-container">
+                  {/* retourne le nombre de tag et les affiche */}
+                  {propsData.tags.map((tag, index) => {
+                    return <Tag key={index} tag={tag} />;
+                  })}
+                </div>
+              </div>
             </div>
-            <div className="star">
-              <div className="star-red">{createStars()}</div>
-              <div className="star-white">
-                <FontAwesomeIcon
-                  icon="fa-solid fa-star"
-                  size="xl"
-                  style={{ color: "#e3e3e3" }}
+            <div className="host-star">
+              <div className="host">
+                <div className="name">
+                  <p>{propsData.host.name}</p>
+                </div>
+                <img
+                  className="host-image"
+                  src={propsData.host.picture}
+                  alt="photo du proprio"
                 />
-                <FontAwesomeIcon
-                  icon="fa-solid fa-star"
-                  size="xl"
-                  style={{ color: "#e3e3e3" }}
-                />
-                <FontAwesomeIcon
-                  icon="fa-solid fa-star"
-                  size="xl"
-                  style={{ color: "#e3e3e3" }}
-                />
-                <FontAwesomeIcon
-                  icon="fa-solid fa-star"
-                  size="xl"
-                  style={{ color: "#e3e3e3" }}
-                />
-                <FontAwesomeIcon
-                  icon="fa-solid fa-star"
-                  size="xl"
-                  style={{ color: "#e3e3e3" }}
-                />
+              </div>
+              <div className="star">
+                <div className="star-red">{createStars()}</div>
+                <div className="star-white">
+                  <FontAwesomeIcon
+                    icon="fa-solid fa-star"
+                    size="xl"
+                    style={{ color: "#e3e3e3" }}
+                  />
+                  <FontAwesomeIcon
+                    icon="fa-solid fa-star"
+                    size="xl"
+                    style={{ color: "#e3e3e3" }}
+                  />
+                  <FontAwesomeIcon
+                    icon="fa-solid fa-star"
+                    size="xl"
+                    style={{ color: "#e3e3e3" }}
+                  />
+                  <FontAwesomeIcon
+                    icon="fa-solid fa-star"
+                    size="xl"
+                    style={{ color: "#e3e3e3" }}
+                  />
+                  <FontAwesomeIcon
+                    icon="fa-solid fa-star"
+                    size="xl"
+                    style={{ color: "#e3e3e3" }}
+                  />
+                </div>
               </div>
             </div>
           </div>

@@ -29,3 +29,18 @@
     border-radius: 10px;
   }
 }
+
+@media (max-width: 768px) {
+  .card {
+    height: 255px;
+    .cover {
+      height: 255px;
+      .imageCover {
+        height: 100%;
+      }
+      .thumb-title {
+        left: 5%;
+      }
+    }
+  }
+}

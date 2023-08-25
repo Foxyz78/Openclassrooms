@@ -1,11 +1,11 @@
 @import "color.scss";
 
 .wrapper-dropdown {
-  margin: 38px 0;
+  display: flex;
+  flex-direction: column;
   border-radius: 5px;
   .dropdown-container {
     background-color: $secondary;
-
     // animation du dropdown
     height: 0;
     opacity: 0;
@@ -63,4 +63,23 @@
 .animated {
   opacity: 1 !important;
   transition: all 0.3s ease-in-out !important;
+}
+
+@media (max-width: 768px) {
+  .dropdown {
+    margin-bottom: 27px;
+    gap: 30px;
+  }
+  .title-dropdown {
+    height: 30px;
+    h2 {
+      font-size: 13px;
+    }
+  }
+  .dropdown-container {
+    height: 119px;
+    .content-dropdown {
+      font-size: 12px;
+    }
+  }
 }

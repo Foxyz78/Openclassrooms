@@ -33,6 +33,10 @@ a {
 }
 
 @media (max-width: 768px) {
+  header {
+    width: 90%;
+    margin: 0 auto;
+  }
   .navLinks {
     width: 100%;
     margin: 0;
@@ -41,6 +45,9 @@ a {
     }
     ul {
       align-items: center;
+      .navbar-logo {
+        width: 145px;
+      }
     }
   }
 }

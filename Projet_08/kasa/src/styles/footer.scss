@@ -41,8 +41,15 @@
     top: 50%;
     transform: translateY(-50%);
   }
-  //height: 209px;
   ul {
     margin: 0 auto;
+    li {
+      padding: 10px 0;
+    }
+    .footer-copyright {
+      width: 133px;
+      text-align: center;
+      font-size: 12px;
+    }
   }
 }
