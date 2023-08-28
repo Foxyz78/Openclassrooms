@@ -1,5 +1,9 @@
 @import "color.scss";
 
+.page-404 {
+  gap: 139px;
+  margin: 139px auto !important;
+}
 .main-content {
   display: flex;
   flex-direction: column;
@@ -10,8 +14,10 @@
   }
 }
 .wrapper-404 {
+  display: flex;
   width: 597px;
   height: 263px;
+  align-items: center;
   h2 {
     margin: 0 auto;
     color: $primary;
@@ -22,11 +28,33 @@
     font-weight: 700;
   }
 }
-
 h3 {
-  margin: 139px 0;
+  //margin: 139px 0;
   font-size: 36px;
   font-weight: 500;
   font-family: Montserrat;
   color: $primary;
+}
+@media (max-width: 768px) {
+  .wrapper-404 {
+    width: 198px;
+    height: 99px;
+    h2 {
+      font-size: 96px;
+    }
+  }
+
+  .page-404 {
+    margin: 113px auto !important;
+    gap: 113px;
+    h3 {
+      margin: 0;
+      width: 260px;
+      font-size: 18px;
+      text-align: center;
+    }
+    a {
+      font-size: 14px;
+    }
+  }
 }

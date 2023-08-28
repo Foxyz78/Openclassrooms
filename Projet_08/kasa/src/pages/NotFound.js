@@ -6,14 +6,13 @@ import "../styles/notfound.scss";
 const NotFound = () => {
   return (
     <>
-      <header className="header">
-        <Navbar />
-      </header>
-      <div className="main-content">
+      <Navbar />
+
+      <div className="main-container page-404">
         <div className="wrapper-404">
           <h2>404</h2>
         </div>
-        <h3>La page que vous demandez n'existe pas.</h3>
+        <h3>Oops! La page que vous demandez n'existe pas.</h3>
         <Link to="/">retourner sur la page d'accueil</Link>
       </div>
       <footer className="footer">

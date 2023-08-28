@@ -68,10 +68,8 @@
   }
 
   .title-container {
-    margin-bottom: 21px;
     .title {
       height: 51px;
-      //width: 635px;
     }
   }
 }
@@ -104,6 +102,7 @@
 
 .dropdown {
   display: flex;
+  margin: 31px 0 50px 0;
   justify-content: space-between;
   .wrapper-dropdown {
     width: 582px;
@@ -128,7 +127,7 @@
 .tag-container {
   display: flex;
   flex-direction: row;
-  padding-right: 10px;
+  margin: 10px 0 16px 0;
   .tag-content {
     margin-right: 10px;
   }
@@ -138,13 +137,14 @@
   }
 }
 
-@media (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 1280px) {
   .carousel {
     width: 90%;
   }
   .dropdown {
     display: flex;
     flex-direction: column;
+    gap: 30px;
   }
 }
 
@@ -163,41 +163,47 @@
     display: flex;
     flex-direction: column;
     align-items: start;
-    .host-star {
-      width: 100%;
-      display: flex;
-      //margin: 20px 0;
-      flex-direction: row-reverse;
-      align-items: center;
-      justify-content: space-between;
-      .host {
-        margin-bottom: 0;
-        .name {
-          justify-content: end;
-          p {
-            font-size: 12px;
-          }
-        }
-        .host-image {
-          width: 32px;
-          height: 32px;
-        }
-      }
-      .star {
-        .star-red {
-          gap: 1px;
-        }
-        .star-white {
-          gap: 1px;
-        }
-      }
-    }
+
     .tag {
+      .tag-container {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
       .tag-content {
         width: 84px;
       }
       h4 {
         font-size: 10px;
+      }
+    }
+  }
+  .host-star {
+    width: 100%;
+    height: 32px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    .host {
+      margin-bottom: 0;
+      .name {
+        justify-content: end;
+        p {
+          font-size: 12px;
+        }
+      }
+      .host-image {
+        width: 32px;
+        height: 32px;
+      }
+    }
+    .star {
+      .star-red {
+        gap: 1px;
+      }
+      .star-white {
+        gap: 1px;
       }
     }
   }
@@ -218,6 +224,7 @@
   }
   .dropdown {
     display: flex;
+    margin: 13px 0 27px 0;
     flex-direction: column;
     .description .wrapper-dropdown {
       margin: 0;
@@ -225,5 +232,8 @@
     .wrapper-dropdown {
       width: 100%;
     }
+  }
+  .fa-star {
+    font-size: 18px;
   }
 }

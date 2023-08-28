@@ -1,13 +1,18 @@
 @import "color.scss";
 
 .footer {
+  display: flex;
   background-color: $footer_background;
   width: 100%;
   height: 209px;
   color: $font;
   ul {
+    display: flex;
+    padding: 0;
     flex-direction: column;
     justify-content: center;
+    list-style: none;
+    gap: 28px;
     li {
       color: $font;
       align-self: center;
@@ -22,7 +27,7 @@
 }
 
 .footer-container {
-  width: 513px;
+  //width: 513px;
   display: flex;
   margin: 0 auto;
 }
@@ -36,20 +41,19 @@
     position: relative;
   }
   .footer-container {
-    position: absolute;
+    position: relative;
     width: 100%;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  ul {
-    margin: 0 auto;
-    li {
-      padding: 10px 0;
-    }
-    .footer-copyright {
-      width: 133px;
-      text-align: center;
-      font-size: 12px;
+    ul {
+      margin: 0 auto;
+      gap: 0;
+      .footer-copyright {
+        display: flex;
+        width: 133px;
+        height: 46px;
+        text-align: center;
+        align-items: center;
+        font-size: 12px;
+      }
     }
   }
 }
