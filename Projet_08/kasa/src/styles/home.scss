@@ -7,17 +7,25 @@
 }
 
 .gallery {
+  box-sizing: border-box;
   display: flex;
   width: 100%;
+  height: 829px;
   border-radius: 25px;
-  padding: 56px 0 0 0;
+  padding: 56px 50px 43px 50px;
   margin: 43px 0 50px 0;
+  gap: 50px;
   flex-flow: row wrap;
   overflow: auto;
-  justify-content: space-around;
+  //justify-content: space-around;
   background-color: $secondary;
 }
 
+@media (min-width: 769px) and (max-width: 1279px) {
+  .gallery {
+    justify-content: center;
+  }
+}
 /* ================================================================= Responsive Mobile styles ********************************/
 
 @media (max-width: 768px) {
@@ -37,6 +45,8 @@
     background-color: #fff;
     margin: 22px 0;
     padding: 0;
+    gap: 20px;
+    flex-wrap: nowrap;
     .card {
       display: flex;
       width: 100%;
