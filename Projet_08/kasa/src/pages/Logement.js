@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import Dropdown from "../components/Dropdown";
 import Tag from "../components/Tag";
 import Carousel from "../components/Carousel";
+import Star from "../components/DisplayStar";
 
 import "../styles/logement.scss";
 import "../styles/dropdown.scss";
@@ -13,35 +14,35 @@ import "../styles/dropdown.scss";
 const Logement = () => {
     const location = useLocation();
     const propsData = location.state;
-    const numberImages = propsData.pictures.length;
+    //const numberImages = propsData.pictures.length;
 
     // todo
     const { id } = useParams();
     console.log(id);
 
     // Iteration du nombre d'étoiles, stock une icone dans un tableau et retourne le tableau
-    const createStars = () => {
-        const rating = propsData.rating;
-        let stars = [];
+    // const createStars = () => {
+    //     const rating = propsData.rating;
+    //     let stars = [];
 
-        for (let i = 0; i < rating; i++) {
-            stars.push(
-                <FontAwesomeIcon
-                    key={i}
-                    icon="fa-solid fa-star"
-                    size="xl"
-                    style={{ color: "#ff6060" }}
-                />
-            );
-        }
-        return stars;
-    };
+    //     for (let i = 0; i < rating; i++) {
+    //         stars.push(
+    //             <FontAwesomeIcon
+    //                 key={i}
+    //                 icon="fa-solid fa-star"
+    //                 size="xl"
+    //                 style={{ color: "#ff6060" }}
+    //             />
+    //         );
+    //     }
+    //     return stars;
+    // };
 
     return (
         <>
             <Navbar />
             <Carousel />
-            <div className="main-container" id="">
+            <div className="main-container">
                 <div className="info">
                     <div className="info-logement">
                         <div className="title-tag">
@@ -73,7 +74,10 @@ const Logement = () => {
                                 />
                             </div>
                             <div className="star">
-                                <div className="star-red">{createStars()}</div>
+                                <div className="star-red">
+                                    {/* {createStars()} */}
+                                    <Star />
+                                </div>
                                 <div className="star-white">
                                     <FontAwesomeIcon
                                         icon="fa-solid fa-star"

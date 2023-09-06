@@ -1,5 +1,11 @@
+import { useLocation } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 // Iteration du nombre d'étoiles, stock une icone dans un tableau et retourne le tableau
-const createStars = () => {
+const DisplayStars = () => {
+    const location = useLocation();
+    const propsData = location.state;
+
     const rating = propsData.rating;
     let stars = [];
 
@@ -15,3 +21,5 @@ const createStars = () => {
     }
     return stars;
 };
+
+export default DisplayStars;
