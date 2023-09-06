@@ -1,35 +1,42 @@
 @import "color.scss";
 
-.footer {
-  display: flex;
-  background-color: $footer_background;
-  width: 100%;
-  height: 209px;
-  color: $font;
-  ul {
+#root {
     display: flex;
-    padding: 0;
     flex-direction: column;
-    justify-content: center;
-    list-style: none;
-    gap: 28px;
-    li {
-      color: $font;
-      align-self: center;
-      .footer-logo {
-        width: 122px;
+    min-height: 100vh;
+}
+
+.footer {
+    display: flex;
+    background-color: $footer_background;
+    width: 100%;
+    height: 209px;
+    margin-top: auto;
+    color: $font;
+    ul {
         display: flex;
-        justify-content: space-between;
-        align-self: center;
-      }
+        padding: 0;
+        flex-direction: column;
+        justify-content: center;
+        list-style: none;
+        gap: 28px;
+        li {
+            color: $font;
+            align-self: center;
+            .footer-logo {
+                width: 122px;
+                display: flex;
+                justify-content: space-between;
+                align-self: center;
+            }
+        }
     }
-  }
 }
 
 .footer-container {
-  //width: 513px;
-  display: flex;
-  margin: 0 auto;
+    //width: 513px;
+    display: flex;
+    margin: 0 auto;
 }
 
 /* Tablette */
@@ -37,23 +44,23 @@
 }
 
 @media (max-width: 768px) {
-  footer {
-    position: relative;
-  }
-  .footer-container {
-    position: relative;
-    width: 100%;
-    ul {
-      margin: 0 auto;
-      gap: 0;
-      .footer-copyright {
-        display: flex;
-        width: 133px;
-        height: 46px;
-        text-align: center;
-        align-items: center;
-        font-size: 12px;
-      }
+    footer {
+        position: relative;
     }
-  }
+    .footer-container {
+        position: relative;
+        width: 100%;
+        ul {
+            margin: 0 auto;
+            gap: 0;
+            .footer-copyright {
+                display: flex;
+                width: 133px;
+                height: 46px;
+                text-align: center;
+                align-items: center;
+                font-size: 12px;
+            }
+        }
+    }
 }

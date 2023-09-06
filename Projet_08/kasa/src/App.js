@@ -11,16 +11,16 @@ import Logement from "./pages/Logement";
 
 library.add(faStar);
 function App() {
-  return (
-    <>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/*" element={<NotFound />} />
-        <Route path="/logement" element={<Logement />} />
-      </Routes>
-    </>
-  );
+    return (
+        <>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/*" element={<NotFound />} />
+                <Route path="/logement/" element={<Logement />} />
+            </Routes>
+        </>
+    );
 }
 
 export default App;
