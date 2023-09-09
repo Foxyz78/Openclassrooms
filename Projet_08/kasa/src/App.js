@@ -1,9 +1,8 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 
-import "./styles/home.scss";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
@@ -16,8 +15,9 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
-                <Route path="/*" element={<NotFound />} />
-                <Route path="/logement/" element={<Logement />} />
+                <Route path="/logement/:id" element={<Logement />} />
+                <Route path="/404" element={<NotFound />} />
+                <Route path="/*" element={<Navigate to="/404" />} />
             </Routes>
         </>
     );

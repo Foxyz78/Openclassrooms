@@ -1,19 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import Header from "../components/Header";
 import Banner from "../components/Banner";
 import Thumb from "../components/Thumb";
 import Footer from "../components/Footer";
-import { useParams } from "react-router-dom";
+
+import "../styles/home.scss";
 
 const $bannerHome = "./images/banner-home.jpg";
 
-async function loadLogements() {
-    return (await fetch("logements.json")).json();
-}
-const logements = await loadLogements();
-
 const Home = () => {
+    async function loadLogements() {
+        return (await fetch("logements.json")).json();
+    }
+    const [logements, setLogements] = useState([]);
+
+    useEffect(() => {
+        loadLogements().then((logements) => {
+            setLogements(logements);
+        });
+    }, []);
+
     return (
         <>
             <Header />
@@ -38,6 +45,7 @@ const Home = () => {
                             cover={logement.cover}
                             pictures={logement.pictures}
                             equipements={logement.equipments}
+                            //data={logement}
                         />
                     ))}
                 </div>

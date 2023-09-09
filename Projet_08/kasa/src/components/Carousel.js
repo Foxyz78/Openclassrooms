@@ -1,16 +1,13 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
 
 import "../styles/carousel.scss";
 
-const Carousel = () => {
+const Carousel = ({ lodging }) => {
     // Usestate pour le slide du carrousel
     const [slide, setSlide] = useState(0);
     const [indicator, setIndicator] = useState(1);
 
-    const location = useLocation();
-    const propsData = location.state;
-    const numberImages = propsData.pictures.length;
+    const numberImages = lodging.pictures.length;
 
     // Fonctions permettant de faire défilier les inmages
     const slideToRight = () => {
@@ -22,7 +19,7 @@ const Carousel = () => {
         setIndicator(indicator === 1 ? numberImages : indicator - 1);
     };
 
-    // Constantes pour affaicher et cacher les fleches du carrousel
+    // Constantes pour afficher et cacher les fleches du carrousel
     const displayFlex = { display: "flex" };
     const displayNone = { display: "none" };
 
@@ -35,18 +32,19 @@ const Carousel = () => {
                 alt="flêche de gauche"
                 style={numberImages > 1 ? displayFlex : displayNone}
             />
-            {propsData.pictures.map((pictures, index) => {
-                return (
-                    <img
-                        key={index}
-                        className={
-                            slide === index ? "slide" : "slide slide-hidden"
-                        }
-                        src={pictures}
-                        alt={propsData.title}
-                    />
-                );
-            })}
+            {lodging.pictures &&
+                lodging.pictures.map((pictures, index) => {
+                    return (
+                        <img
+                            key={index}
+                            className={
+                                slide === index ? "slide" : "slide slide-hidden"
+                            }
+                            src={pictures}
+                            alt={lodging.title}
+                        />
+                    );
+                })}
             <img
                 onClick={slideToRight}
                 className="arrow arrow-right"
@@ -61,4 +59,5 @@ const Carousel = () => {
         </div>
     );
 };
+
 export default Carousel;

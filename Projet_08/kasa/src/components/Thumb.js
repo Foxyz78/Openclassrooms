@@ -1,35 +1,19 @@
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../styles/thumb.scss";
 
-const Thumb = (props) => {
-    const objLogement = {
-        id: props.id,
-        title: props.title,
-        location: props.location,
-        cover: props.cover,
-        pictures: props.pictures,
-        description: props.description,
-        host: {
-            name: props.host_name,
-            picture: props.host_picture,
-        },
-        rating: props.rating,
-        tags: props.tags,
-        equipements: props.equipements,
-    };
-
+const Thumb = (logement) => {
     return (
         <>
             <Link
-                to="logement/"
-                state={objLogement}
+                to={"logement/" + logement.id}
+                state={logement}
                 className="card"
-                id={objLogement.id}
+                id={logement.id}
             >
                 <div className="cover">
-                    <img className="imageCover" src={objLogement.cover} />
+                    <img className="imageCover" src={logement.cover} />
                     <div className="bgCover">
-                        <h3 className="thumb-title">{objLogement.title}</h3>
+                        <h3 className="thumb-title">{logement.title}</h3>
                     </div>
                 </div>
             </Link>

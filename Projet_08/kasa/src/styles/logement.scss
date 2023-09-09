@@ -8,7 +8,11 @@
 .info {
     width: 100%;
 }
-
+// Cache la scrollbar
+::-webkit-scrollbar {
+    width: 0; /* Remove scrollbar space */
+    background: transparent; /* Optional: just make scrollbar invisible */
+}
 .info-logement {
     display: flex;
     align-items: center;

@@ -1,144 +1,28 @@
-import { useLocation, useParams } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Navigate, useParams } from "react-router-dom";
 
 import Navbar from "../components/Header";
 import Footer from "../components/Footer";
-import Dropdown from "../components/Dropdown";
-import Tag from "../components/Tag";
 import Carousel from "../components/Carousel";
-import Star from "../components/DisplayStar";
+import LodgingInfo from "../components/LodgingInfo";
 
 import "../styles/logement.scss";
-import "../styles/dropdown.scss";
+
+import data from "../data/datas.json";
 
 const Logement = () => {
-    const location = useLocation();
-    const propsData = location.state;
-    //const numberImages = propsData.pictures.length;
-
-    // todo
     const { id } = useParams();
-    console.log(id);
+    const lodging = data.find((datas) => datas.id === id);
 
-    // Iteration du nombre d'étoiles, stock une icone dans un tableau et retourne le tableau
-    // const createStars = () => {
-    //     const rating = propsData.rating;
-    //     let stars = [];
-
-    //     for (let i = 0; i < rating; i++) {
-    //         stars.push(
-    //             <FontAwesomeIcon
-    //                 key={i}
-    //                 icon="fa-solid fa-star"
-    //                 size="xl"
-    //                 style={{ color: "#ff6060" }}
-    //             />
-    //         );
-    //     }
-    //     return stars;
-    // };
-
+    if (!lodging) {
+        return <Navigate to="/404" />;
+    }
     return (
         <>
             <Navbar />
-            <Carousel />
-            <div className="main-container">
-                <div className="info">
-                    <div className="info-logement">
-                        <div className="title-tag">
-                            <div className="title-container">
-                                <h1 className="title">{propsData.title}</h1>
-                                <h2 className="location">
-                                    {propsData.location}
-                                </h2>
-                            </div>
-
-                            <div className="tag">
-                                <div className="tag-container">
-                                    {/* retourne le nombre de tag et les affiche */}
-                                    {propsData.tags.map((tag, index) => {
-                                        return <Tag key={index} tag={tag} />;
-                                    })}
-                                </div>
-                            </div>
-                        </div>
-                        <div className="host-star">
-                            <div className="host">
-                                <div className="name">
-                                    <p>{propsData.host.name}</p>
-                                </div>
-                                <img
-                                    className="host-image"
-                                    src={propsData.host.picture}
-                                    alt="photo du proprio"
-                                />
-                            </div>
-                            <div className="star">
-                                <div className="star-red">
-                                    {/* {createStars()} */}
-                                    <Star />
-                                </div>
-                                <div className="star-white">
-                                    <FontAwesomeIcon
-                                        icon="fa-solid fa-star"
-                                        size="xl"
-                                        style={{ color: "#e3e3e3" }}
-                                    />
-                                    <FontAwesomeIcon
-                                        icon="fa-solid fa-star"
-                                        size="xl"
-                                        style={{ color: "#e3e3e3" }}
-                                    />
-                                    <FontAwesomeIcon
-                                        icon="fa-solid fa-star"
-                                        size="xl"
-                                        style={{ color: "#e3e3e3" }}
-                                    />
-                                    <FontAwesomeIcon
-                                        icon="fa-solid fa-star"
-                                        size="xl"
-                                        style={{ color: "#e3e3e3" }}
-                                    />
-                                    <FontAwesomeIcon
-                                        icon="fa-solid fa-star"
-                                        size="xl"
-                                        style={{ color: "#e3e3e3" }}
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="dropdown">
-                        <div className="description">
-                            <Dropdown
-                                title="Description"
-                                content_dropdown={propsData.description}
-                            />
-                        </div>
-                        <div className="equipement">
-                            <Dropdown
-                                title="Equipement"
-                                content_dropdown={propsData.equipements.map(
-                                    (equipement, index) => {
-                                        return (
-                                            <span
-                                                key={index}
-                                                className="tag-name"
-                                            >
-                                                {equipement}
-                                            </span>
-                                        );
-                                    }
-                                )}
-                            />
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <Carousel lodging={lodging} />
+            <LodgingInfo lodging={lodging} />
             <Footer />
         </>
     );
 };
-
 export default Logement;
