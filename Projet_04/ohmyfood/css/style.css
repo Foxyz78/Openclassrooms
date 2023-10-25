@@ -133,7 +133,6 @@ img {
 }
 
 .btn-arrondi:hover {
-    /* background: linear-gradient(200.64deg, #9356DC -5.2%, #FF79DA 110.74%); */
     box-shadow: 0rem 0.4rem 1.5rem rgba(0, 0, 0, 0.35);
     opacity: 0.8;
 }
