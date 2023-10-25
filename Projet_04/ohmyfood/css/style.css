@@ -13,7 +13,6 @@ html {
 }
 
 h2 {
-
     font-size: 2.4rem;
     font-weight: 700;
 }
@@ -70,7 +69,7 @@ img {
     margin: 0 auto;
     border-radius: 50%;
     border: 6px solid red;
-    border-color: #9356DC transparent #FF79DA transparent;
+    border-color: #9356dc transparent #ff79da transparent;
     animation: ring-animation 1.5s infinite linear;
     position: relative;
     top: 40%;
@@ -79,12 +78,12 @@ img {
 @keyframes ring-animation {
     0% {
         transform: rotate(0deg);
-        border-color: #9356DC transparent #9356DC transparent;
+        border-color: #9356dc transparent #9356dc transparent;
     }
 
     100% {
         transform: rotate(360deg);
-        border-color: #FF79DA transparent #FF79DA transparent;
+        border-color: #ff79da transparent #ff79da transparent;
     }
 }
 
@@ -92,7 +91,7 @@ img {
 .heart__survol {
     transition: 1s ease-in-out;
     opacity: 0;
-    background: -webkit-gradient(linear, left top, left bottom, from(#FF79DA), to(#9356DC));
+    background: -webkit-gradient(linear, left top, left bottom, from(#ff79da), to(#9356dc));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -124,20 +123,19 @@ img {
     display: flex;
     width: 21.8rem;
     height: 5rem;
-    background: linear-gradient(193.33deg, #9356DC -11.44%, #FF79DA 123.93%);
-    border: .1rem solid #9356DC;
+    background: linear-gradient(193.33deg, #9356dc -11.44%, #ff79da 123.93%);
+    border: 0.1rem solid #9356dc;
     border-radius: 2.5rem;
-    box-shadow: 0rem .4rem 1rem rgba(0, 0, 0, 0.25);
+    box-shadow: 0rem 0.4rem 1rem rgba(0, 0, 0, 0.25);
     /* transform: matrix(1, 0, 0, -1, 0, 0); */
-    transition: all .4s ease-in-out;
+    transition: all 0.4s ease-in-out;
     border: none;
 }
 
 .btn-arrondi:hover {
     /* background: linear-gradient(200.64deg, #9356DC -5.2%, #FF79DA 110.74%); */
-    box-shadow: 0rem .4rem 1.5rem rgba(0, 0, 0, 0.35);
-    opacity: .8;
-
+    box-shadow: 0rem 0.4rem 1.5rem rgba(0, 0, 0, 0.35);
+    opacity: 0.8;
 }
 
 article {
@@ -151,12 +149,12 @@ hr {
     position: relative;
     left: 5%;
     margin-bottom: 1.2rem;
-    border: 2px solid #99E2D0;
+    border: 2px solid #99e2d0;
 }
 
 /******** color *****/
 .main-bg--color {
-    color: #99E2D0
+    color: #99e2d0;
 }
 
 .main__container {
@@ -177,7 +175,7 @@ hr {
     height: 6.3rem;
     display: flex;
     justify-content: center;
-    padding: 1.4rem 0 .8rem 0;
+    padding: 1.4rem 0 0.8rem 0;
     font-family: Shrikhand;
     color: #101010;
     font-size: 3rem;
@@ -190,13 +188,12 @@ hr {
 .site-header__recherche-ville {
     height: 5rem;
     display: flex;
-    background-color: #EAEAEA;
-    border-top: linear-gradient(180deg, rgb(147, 147, 147) 0%, #e3e1e1 20%) .2rem inset;
+    background-color: #eaeaea;
 }
 
 .form {
     width: 100%;
-    box-shadow: inset 0px 2px 4px 0px rgba(0, 0, 0, .15);
+    box-shadow: inset 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -205,7 +202,7 @@ hr {
 .form input {
     font-size: 1.6rem;
     margin-left: 1.7rem;
-    background-color: #EAEAEA;
+    background-color: #eaeaea;
     border: none;
 }
 
@@ -218,7 +215,7 @@ hr {
     display: flex;
     flex-direction: column;
     padding: 3.9rem 0 5.7rem 0;
-    background: #F7F7F7;
+    background: #f7f7f7;
 }
 
 .description__titre-section {
@@ -258,7 +255,7 @@ hr {
     z-index: 999;
     bottom: 2.3rem;
     border-radius: 4rem 4rem 0 0;
-    background: #F6F6F6;
+    background: #f6f6f6;
     display: flex;
     flex-direction: column;
 }
@@ -341,9 +338,9 @@ hr {
     margin-right: -5.9rem;
     justify-content: center;
     align-items: center;
-    background-color: #99E2D0;
+    background-color: #99e2d0;
     border-radius: 0px 15px 15px 0px;
-    transition: all .3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 .checked-hide i {
@@ -355,7 +352,7 @@ hr {
     background-color: #fff;
     border-radius: 50%;
     border: 1px solid #fff;
-    color: #99E2D0;
+    color: #99e2d0;
 }
 
 /****** Animation hover qui fait apparaitre le bouton check / slide de droite à gauche *****/
@@ -435,7 +432,7 @@ hr {
 .fonctionnement__contenu div {
     width: 85%;
     height: 7.2rem;
-    background: #F6F6F6;
+    background: #f6f6f6;
     border-radius: 2rem;
     font-size: 1.6rem;
     font-weight: 500;
@@ -443,7 +440,7 @@ hr {
     display: flex;
     align-items: center;
     align-self: center;
-    transition: .3s ease-in-out;
+    transition: 0.3s ease-in-out;
 }
 
 .fonctionnement__contenu_nombre {
@@ -452,7 +449,7 @@ hr {
     border-radius: 50%;
     position: relative;
     left: -1.2rem;
-    background-color: #9356DC;
+    background-color: #9356dc;
     color: #fff;
     justify-content: flex-start;
     line-height: 2.4rem;
@@ -460,14 +457,14 @@ hr {
 }
 
 .fonctionnement__contenu div:hover {
-    background-color: #F5EDFF;
+    background-color: #f5edff;
 }
 
 /********************** RESTAURANT **********************/
 .restaurant {
     display: flex;
     flex-direction: column;
-    background-color: #F7F7F7;
+    background-color: #f7f7f7;
     padding-top: 5.4rem;
     padding-bottom: 6.4rem;
 }
@@ -519,8 +516,8 @@ hr {
     display: flex;
     top: -18rem;
     position: relative;
-    background-color: #99E2D0;
-    border-radius: .2rem;
+    background-color: #99e2d0;
+    border-radius: 0.2rem;
     align-items: center;
     align-self: end;
     margin-right: 1.5rem;
@@ -558,7 +555,6 @@ hr {
     width: 100%;
 }
 
-
 /******************** FOOTER ****************************/
 .site-footer {
     background-color: #353535;
@@ -568,7 +564,7 @@ hr {
 }
 
 .site-footer__contenu li {
-    padding-bottom: .7rem;
+    padding-bottom: 0.7rem;
 }
 
 .site-footer__contenu .fa-solid {
@@ -579,7 +575,7 @@ hr {
     color: #fff;
     font-size: 1.6rem;
     padding-left: 2.5rem;
-    margin-bottom: .7rem;
+    margin-bottom: 0.7rem;
 }
 
 .site-footer__contenu li:nth-child(1) {
@@ -592,7 +588,6 @@ hr {
                 VERSION TABLETTE
 ******************************************************/
 @media (min-width: 768px) and (max-width: 1023px) {
-
     .menu__titre {
         justify-content: center;
     }
